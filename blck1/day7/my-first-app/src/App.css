@@ -1,0 +1,23 @@
+.big {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  /* border: 1px solid black; */
+  width: 250px;
+  height: 250px;
+  /* border-radius: 7px; */
+  padding: 25px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+body {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+.infoo {
+  display: flex;
+  gap: 30px;
+  flex-direction: row;
+}
