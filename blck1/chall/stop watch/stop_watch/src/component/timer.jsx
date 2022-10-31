@@ -13,8 +13,8 @@ function Timer() {
     if (start) {
       const interval = setInterval(() => {
         setSeconds(seconds + 1);
-      }, 1000);
-      if (seconds >= 60) {
+      }, 10);
+      if (seconds >= 100) {
         setMin(min + 1);
         setSeconds(0);
       }
