@@ -1,0 +1,58 @@
+.xxa {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  border-radius: 9px;
+  margin-bottom: 30px;
+  width: 400px;
+  align-items: center;
+  box-shadow: 6px 9px 15px 8px rgba(45, 217, 42, 0.51);
+  -webkit-box-shadow: 6px 9px 15px 8px rgba(45, 217, 42, 0.51);
+  -moz-box-shadow: 6px 9px 15px 8px rgba(45, 217, 42, 0.51);
+  background-color: aquamarine;
+}
+.xxe {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+body {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(230, 230, 156);
+}
+.imgg {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.bodyy {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.sbody {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+.gg {
+  background-color: transparent;
+  border-radius: 7px;
+  border: 1px solid white;
+}
+.inputt {
+  background-color: transparent;
+  border-radius: 7px;
+  border: 1px solid white;
+  height: 30px;
+}
+.cartbo {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 100px;
+}

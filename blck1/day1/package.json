@@ -1,0 +1,15 @@
+{
+  "name": "blck1",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "day1.js",
+  "dependencies": {
+    "chalk": "^5.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

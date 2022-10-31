@@ -1,0 +1,54 @@
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgreen;
+}
+.big {
+  border: 3px solid black;
+  border-radius: 17px;
+  width: 500px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.date {
+  display: flex;
+  flex-direction: row;
+}
+.timer {
+  color: black;
+  font-size: 30px;
+}
+.bttns {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.bttn1 {
+  background-color: aquamarine;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.bttn2 {
+  background-color: red;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.bttn3 {
+  background-color: lightblue;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
