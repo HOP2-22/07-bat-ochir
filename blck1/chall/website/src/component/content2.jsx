@@ -10,7 +10,7 @@ function Content2() {
         marginTop: "150px",
       }}
     >
-      <Infos />
+      <Infos />\
       <div className="photo2">
         <img src={photo2} alt="" />
         <div className="bell-case">

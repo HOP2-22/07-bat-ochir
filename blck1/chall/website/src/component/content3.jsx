@@ -3,6 +3,7 @@ import App from "../App.css";
 import woman2 from "../imgs/woman2.jpg";
 import woman1 from "../imgs/woman1.jpg";
 import Infos from "./infos";
+import Iinfos from "./infos2";
 function Content3() {
   return (
     <div
@@ -21,11 +22,15 @@ function Content3() {
         style={{
           display: "flex",
           flexDirection: "row",
-          gap: "200px",
+          gap: "50px",
           marginTop: "50px",
         }}
       >
-        <img className="" src={woman1}></img>
+        <img
+          className=""
+          src={woman1}
+          style={{ marginLeft: "-500px", width: "800px", height: "800px" }}
+        ></img>
         <Infos />
       </div>
       <div
@@ -37,7 +42,7 @@ function Content3() {
           marginTop: "50px",
         }}
       >
-        <Infos />
+        <Iinfos />
         <img src={woman2} />
       </div>
     </div>

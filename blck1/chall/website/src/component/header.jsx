@@ -14,7 +14,9 @@ function Header() {
   return (
     <div
       className="header"
-      style={{ backgroundColor: offset == 0 ? "" : "lightgrey" }}
+      style={{
+        backgroundColor: offset >= window.innerHeight ? "lightgrey" : "",
+      }}
     >
       <div className="row-1">
         <div className="txt1">

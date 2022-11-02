@@ -1,8 +1,8 @@
 import React from "react";
 import App from "../App.css";
-function Infos() {
+function Iinfos() {
   return (
-    <div className="" style={{ marginLeft: "350px", marginTop: "150px" }}>
+    <div className="" style={{ marginLeft: "-50px", marginTop: "100px" }}>
       <p className="text-2">
         Simple task
         <br /> management
@@ -19,4 +19,4 @@ function Infos() {
     </div>
   );
 }
-export default Infos;
+export default Iinfos;
