@@ -2,8 +2,15 @@ import React from "react";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import { ColorModeContext } from "../context/ThemeContext";
+import { useContext } from "react";
+import Switch from "@mui/material/Switch";
+import ThemeContext from "../context/ThemeContext";
 
+const label = { inputProps: { "aria-label": "Switch demo" } };
 function Header() {
+  const { theme, changeTheme } = useContext(ColorModeContext);
+
   return (
     <Box
       sx={{
@@ -25,6 +32,14 @@ function Header() {
           alignItems: "center",
         }}
       >
+        <Switch
+          {...label}
+          defaultChecked
+          onChange={(e) => {
+            changeTheme(e.target.checked);
+          }}
+        />
+
         <Typography
           sx={{
             textDecoration: "underline",
