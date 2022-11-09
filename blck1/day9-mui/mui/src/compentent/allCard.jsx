@@ -18,7 +18,7 @@ function AllCard() {
       >
         {data.map((data, index) => {
           return (
-            <Grid item xs={12} md={4} lg={6}>
+            <Grid item xs={12} md={4}>
               <Cart
                 image={data.image}
                 title={data.title}

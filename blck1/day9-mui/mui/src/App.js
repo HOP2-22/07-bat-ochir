@@ -5,12 +5,14 @@ import Typography from "@mui/material/Typography";
 import Header from "./compentent/Header";
 import Content from "./compentent/Content";
 import AllCard from "./compentent/allCard";
+import { Footer } from "./compentent/Footer";
 function App() {
   return (
     <>
       <Header />
       <Content />
       <AllCard />
+      <Footer />
     </>
   );
 }

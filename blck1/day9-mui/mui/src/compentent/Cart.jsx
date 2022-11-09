@@ -11,7 +11,7 @@ import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 function Cart({ image, title, des, avatar, name, date }) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, paddingBottom: "20px" }}>
       <CardMedia
         component="img"
         height="140"
