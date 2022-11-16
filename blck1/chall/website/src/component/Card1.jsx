@@ -5,7 +5,7 @@ const Card1 = ({ starNumber, comment, avatar, name }) => {
   const star = ["⭐", "⭐", "⭐", "⭐", "⭐"];
   star.length = starNumber;
   return (
-    <div>
+    <div style={{ padding: "10px" }}>
       <div className="name-cart-cont">
         <div className="stars">{star.join("")}</div>
         <div className="comments">{comment}</div>

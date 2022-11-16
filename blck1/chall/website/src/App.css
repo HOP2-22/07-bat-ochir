@@ -196,6 +196,7 @@
   width: 366px;
   height: 374px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 10px;
 }
 .row-3 {
   display: flex;
@@ -234,7 +235,7 @@
   background-color: #252b3d;
   width: 100vw;
   height: 400px;
-  margin-top: 10vw;
+  margin-top: 150px;
 }
 .namecart_name {
   margin-top: 14px;
@@ -314,4 +315,8 @@
   font-weight: 800;
   font-size: 48px;
   line-height: 60px;
+}
+.full-big {
+  padding-bottom: 150px;
+  background-color: #4da0fd;
 }
