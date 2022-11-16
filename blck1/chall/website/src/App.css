@@ -20,6 +20,7 @@
   display: flex;
   flex-direction: row;
   gap: 27px;
+  align-items: center;
 }
 .titles {
   font-family: "Mulish", sans-serif;
@@ -317,6 +318,42 @@
   line-height: 60px;
 }
 .full-big {
-  padding-bottom: 150px;
-  background-color: #4da0fd;
+  padding-top: 150px;
+
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+}
+.full-data {
+  font-size: 48px;
+  color: #25313c;
+}
+.full-row2 {
+  border-radius: 56px;
+  width: 56px;
+  height: 56px;
+}
+.row-2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 60px;
+}
+.dogge {
+  width: 900px;
+  height: 450px;
+}
+.full-des {
+  font-size: 18px;
+  color: gray;
+}
+.full-comment {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: center;
 }

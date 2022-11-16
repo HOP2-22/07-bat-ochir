@@ -1,15 +1,21 @@
-import { createContext, useState } from "react";
+import React, { createContext } from "react";
+import { useState } from "react";
 
-export const DataContext = createContext();
+export const ColorModeContext = createContext();
 
-export function ThemeComponent({ children }) {
-  const [checked, setChecked] = useState(true);
-  const handleChange = () => {
-    setChecked(!checked);
+function ThemeContext({ children }) {
+  const [theme, setTheme] = useState(true);
+
+  const ColorModeHander = () => {
+    setTheme(!theme);
   };
+
   return (
-    <DataContext.Provider value={{ handleChange, checked }}>
+    <ColorModeContext.Provider
+      value={{ theme: theme, changeTheme: ColorModeHander }}
+    >
       {children}
-    </DataContext.Provider>
+    </ColorModeContext.Provider>
   );
 }
+export default ThemeContext;

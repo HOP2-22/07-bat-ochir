@@ -1,11 +1,17 @@
 import App from "../App.css";
 import bg from "../imgs/bg.svg";
 import photo2 from "../imgs/photo2.jpg";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import Switch from "@mui/material/Switch";
+import { ColorModeContext } from "../Context/Context";
+
 function Header() {
   const navigate = useNavigate();
+  const { changeTheme } = useContext(ColorModeContext);
   const [offset, setOffset] = useState(0);
+  const label = { inputProps: { "aria-label": "Switch demo" } };
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset);
     window.addEventListener("scroll", onScroll);
@@ -34,15 +40,18 @@ function Header() {
           <div className="bluee"></div>
         </div>
         <div className="tools">
+          <Switch {...label} defaultChecked onChange={() => changeTheme()} />
           {headerTitles.map((title, index) => {
             return (
-              <p
-                key={index}
-                className="titles"
-                onClick={() => navigate(`${title.path}`)}
-              >
-                {title.name}
-              </p>
+              <>
+                <p
+                  key={index}
+                  className="titles"
+                  onClick={() => navigate(`${title.path}`)}
+                >
+                  {title.name}
+                </p>
+              </>
             );
           })}
           <button className="header_bttn">Get access</button>

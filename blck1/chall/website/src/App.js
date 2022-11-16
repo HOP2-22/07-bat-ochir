@@ -5,22 +5,22 @@ import Header from "./component/header";
 import Footer from "./component/footer";
 import Home2 from "./comp2/Home2";
 import Layout from "./layout/index";
-import { ThemeComponent } from "../src/Context/Context";
+import ThemeContext from "./Context/Context";
 import Full from "./comp2/Fullinfo";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Layout>
-          <ThemeComponent>
+        <ThemeContext>
+          <Layout>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/Home" element={<Home2 />} />
               <Route path="/:id" element={<Full />} />
             </Routes>
-          </ThemeComponent>
-        </Layout>
+          </Layout>
+        </ThemeContext>
       </BrowserRouter>
     </>
   );
