@@ -51,6 +51,8 @@ function AllCard() {
                 name={data.owner.firstName}
                 date={data.date}
                 key={index}
+                like={data.likes}
+                text={data.text}
               />
             </Grid>
           );

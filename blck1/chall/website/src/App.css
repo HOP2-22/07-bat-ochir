@@ -321,7 +321,7 @@
   padding-top: 150px;
 
   width: 100vw;
-  height: 100vh;
+
   display: flex;
   flex-direction: column;
 
@@ -330,18 +330,20 @@
 .full-data {
   font-size: 48px;
   color: #25313c;
+  margin-left: 500px;
+  width: 1000px;
 }
 .full-row2 {
   border-radius: 56px;
   width: 56px;
   height: 56px;
+  margin-left: 500px;
 }
 .row-2 {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
-  gap: 60px;
+  gap: 30px;
 }
 .dogge {
   width: 900px;
@@ -352,8 +354,11 @@
   color: gray;
 }
 .full-comment {
+  width: 900px;
+
+  margin-left: 600px;
+  justify-content: center;
   display: flex;
   flex-direction: row;
   gap: 30px;
-  align-items: center;
 }

@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
   return (
     <div
       style={{
-        backgroundColor: theme ? "red" : "blue",
+        backgroundColor: theme ? "darkgrey" : "white",
       }}
     >
       <Header />

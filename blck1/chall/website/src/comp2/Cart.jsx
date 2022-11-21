@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import photo1 from "../imgs/photo1.jpg";
 
 import { Box, Avatar } from "@mui/material";
-function Cart({ image, title, des, avatar, name, date }) {
+function Cart({ image, title, des, avatar, name, date, like, text }) {
   return (
     <Card sx={{ maxWidth: 345, paddingBottom: "20px" }}>
       <CardMedia
@@ -30,30 +30,54 @@ function Cart({ image, title, des, avatar, name, date }) {
         sx={{
           marginLeft: "-70px",
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "column",
           justifyContent: "center",
           gap: "15px",
           alignItems: "center",
         }}
       >
-        <Avatar alt="Remy Sharp" src={avatar} />
-        <Typography
+        <Typography sx={{ marginLeft: "-180px", color: "red" }}>
+          likes:{like}
+        </Typography>
+        <Typography sx={{ color: "blue", width: "250px", marginLeft: "10px" }}>
+          {text}
+        </Typography>
+        <Box
           sx={{
-            color: " #6D7D8B",
-            fontSize: "12px",
+            display: "flex",
+            flexDirection: "row",
+            gap: "20px",
           }}
         >
-          {name}
-        </Typography>
+          <Box
+            sx={{
+              marginLeft: "-70px",
+              display: "flex",
+              flexDirection: "row",
+              gap: "20px",
+              alignItems: "center",
+            }}
+          >
+            <Avatar alt="Remy Sharp" src={image} />
+            <Typography
+              sx={{
+                color: " #6D7D8B",
+                fontSize: "22px",
+              }}
+            >
+              {name}
+            </Typography>
+          </Box>
 
-        <Typography
-          sx={{
-            color: " #6D7D8B",
-            fontSize: "12px",
-          }}
-        >
-          {date}
-        </Typography>
+          <Typography
+            sx={{
+              color: " #6D7D8B",
+              fontSize: "12px",
+            }}
+          >
+            {date}
+          </Typography>
+        </Box>
       </Box>
     </Card>
   );

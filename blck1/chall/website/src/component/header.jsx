@@ -27,16 +27,22 @@ function Header() {
       path: "/Contact",
     },
   ];
+  const Team = {
+    path: "/",
+  };
+
   return (
     <div
       className="header"
       style={{
-        backgroundColor: offset >= window.innerHeight ? "lightgrey" : "",
+        backgroundColor: offset >= 1 ? "lightgrey" : "",
       }}
     >
       <div className="row-1">
         <div className="txt1">
-          <div className="team">team</div>
+          <div className="team" onClick={() => navigate(`${Team.path}`)}>
+            team
+          </div>
           <div className="bluee"></div>
         </div>
         <div className="tools">
