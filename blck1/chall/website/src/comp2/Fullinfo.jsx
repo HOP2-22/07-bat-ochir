@@ -7,7 +7,6 @@ const zurag = {
   img: "https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg",
 };
 function Full() {
-  const [clear, setClear] = useState("");
   const [list, setList] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [data, setData] = useState();

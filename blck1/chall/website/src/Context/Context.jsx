@@ -5,7 +5,6 @@ export const ColorModeContext = createContext();
 
 function ThemeContext({ children }) {
   const [theme, setTheme] = useState(true);
-
   const ColorModeHander = () => {
     setTheme(!theme);
   };

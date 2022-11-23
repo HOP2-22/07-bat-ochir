@@ -26,6 +26,10 @@ function Header() {
       name: "Contact",
       path: "/Contact",
     },
+    {
+      name: "Login",
+      path: "/Login",
+    },
   ];
   const Team = {
     path: "/",
