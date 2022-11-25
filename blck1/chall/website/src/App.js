@@ -11,12 +11,13 @@ import Login from "./comp2/Login";
 import Gif from "./gif/Gif";
 import Movie from "./movie/Moive_Site";
 import MovieContextParent from "./Context/Movie-context";
+import See from "./movie/See";
+import Toy from "./toy/Toy";
 
 function App() {
   return (
     <>
-      {/* {" "}
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <ThemeContext>
           <Layout>
             <Routes>
@@ -28,10 +29,17 @@ function App() {
           </Layout>
         </ThemeContext>
       </BrowserRouter> */}
-      {/* <MovieContextParent>
-        <Movie /> */}
-      {/* </MovieContextParent> */}
-      <Gif />
+      {/* 
+      <MovieContextParent>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Movie />} />
+            <Route path=":MovieId" element={<See />} />
+          </Routes>
+        </BrowserRouter>
+      </MovieContextParent> */}
+      {/* <Gif /> */}
+      <Toy />
     </>
   );
 }
