@@ -4,14 +4,65 @@ import mouse from "../imgs/mouse.png";
 import tunel2 from "../imgs/tunel2.png";
 import { width } from "@mui/system";
 
+const GameOver = ({ totalPoint, totalMin }) => {
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
+  return (
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div
+        style={{
+          width: "400px",
+          height: "300px",
+          backgroundColor: "white",
+          justifyContent: "center",
+          alignContent: "center",
+          display: `(${totalMin == 0 ? "flex" : "none"})`,
+        }}
+      >
+        <div
+          className=""
+          style={{
+            height: "100% ",
+            display: "flex",
+            justifyContent: "space-around",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <p style={{ fontSize: "20px" }}>Good❤️😊</p>
+          <p style={{ fontSize: "20px" }}>your score:{totalPoint}</p>
+          <b>daraagin udaa ilu xicegerei amjilt ~_~</b>
+          <button
+            style={{ height: "50px", fontSize: "20px" }}
+            onClick={refreshPage}
+          >
+            play again
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 function Toy() {
   const [show, setShow] = useState(false);
   const [seconds, setSeconds] = useState(0);
   const [min, setMin] = useState(30);
-  const [click, setClick] = useState(true);
+  const [click, setClick] = useState(false);
 
   const [start, setStart] = useState(false);
   const [stop, setStop] = useState(true);
+  const [isGameOver, setIsGameOver] = useState(false);
   const [score, setScore] = useState(0);
   const [move, setMove] = useState(new Array(15).fill(false));
   const translation = () => {
@@ -20,8 +71,19 @@ function Toy() {
 
     setTimeout(() => {
       move[set] = false;
-    }, 1000);
+    }, 700);
   };
+  const [mousePosition, setMousePosition] = useState({ x: null, y: null });
+  useEffect(() => {
+    const mouseMoveHandler = (event) => {
+      const { clientX, clientY } = event;
+      setMousePosition({ x: clientX, y: clientY });
+    };
+    document.addEventListener("mousemove", mouseMoveHandler);
+    return () => {
+      document.removeEventListener("mousemove", mouseMoveHandler);
+    };
+  }, []);
   useEffect(() => {
     let inter = null;
     inter = setInterval(() => {
@@ -31,7 +93,7 @@ function Toy() {
   }, [click]);
 
   useEffect(() => {
-    if (start) {
+    if (click) {
       const interval = setInterval(() => {
         setSeconds(seconds + 1);
       }, 10);
@@ -39,26 +101,31 @@ function Toy() {
         setMin(min - 1);
         setSeconds(0);
       }
+      if (min == 0) {
+        setMin(0);
+      }
 
       return () => clearInterval(interval);
     }
-  }, [seconds, start]);
+  }, [seconds, click]);
 
   return (
     <body
       style={{
-        backgroundColor: "#b40001",
+        backgroundColor: min == 0 ? "blue" : "#b40001",
         width: "100vw",
         height: "100vh",
         padding: "0",
         position: "relative",
       }}
     >
+      {min == 0 && <GameOver totalPoint={score} totalMin={min} />}
       <div
         style={{
-          display: "flex",
           alignItems: "center",
           flexDirection: "column",
+          position: "absolute",
+          display: min == 0 ? "none" : "flex",
         }}
       >
         <div
@@ -97,20 +164,22 @@ function Toy() {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  gap: "px",
+
                   alignItems: "center",
                 }}
               >
                 <img
+                  draggable="false"
                   src={tunel2}
                   style={{
                     position: "relative",
                     zIndex: "1",
                     width: "128px",
-                    height: "128px",
+                    height: "100px",
                   }}
                 />
                 <img
+                  draggable="false"
                   onClick={() => {
                     setScore((e) => e + 1);
                   }}
@@ -118,21 +187,22 @@ function Toy() {
                   style={{
                     position: "relative",
                     zIndex: "2",
-                    width: "64px",
-                    height: "128px",
-                    marginTop: "-100px",
+                    width: "68px",
+                    height: "104px",
+                    marginTop: "-65px",
                     transform: `translateY(${!movee ? "50px" : "0px"})`,
-                    transition: "all 1s",
+                    transition: "all 0.3s",
                   }}
                 />
                 <img
+                  draggable="false"
                   src={tunel1}
                   style={{
                     position: "relative",
                     zIndex: "3",
-                    marginTop: "-50px",
+                    marginTop: "-55px",
                     width: "128px",
-                    height: "104px",
+                    height: "110px",
                   }}
                 />
               </div>
@@ -142,7 +212,6 @@ function Toy() {
         <button
           className="bttn1"
           onClick={() => {
-            setStart(true);
             setClick(true);
           }}
           style={{
