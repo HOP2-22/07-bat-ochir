@@ -13,33 +13,41 @@ import Movie from "./movie/Moive_Site";
 import MovieContextParent from "./Context/Movie-context";
 import See from "./movie/See";
 import Toy from "./toy/Toy";
+import Game from "./purble place/Purple";
 
 function App() {
   return (
     <>
+      <Game />
       {/* <BrowserRouter>
-        <ThemeContext>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/Home" element={<Home2 />} />
-              <Route path="/:id" element={<Full />} />
-              <Route path="/Login" element={<Login />} />
-            </Routes>
-          </Layout>
-        </ThemeContext>
+        <MovieContextParent>
+          <ThemeContext>
+            <Layout>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/Blog" element={<Home2 />} />
+                <Route path="/:id" element={<Full />} />
+                <Route path="/Login" element={<Login />} />
+
+                <Route path="/Game" element={<Toy />} />
+                <Route path="/Giphy" element={<Gif />} />
+                <Route path="/Movie" element={<Movie />} />
+                <Route path=":MovieId" element={<See />} />
+              </Routes>
+            </Layout>
+          </ThemeContext>
+        </MovieContextParent>
       </BrowserRouter> */}
-      {/* 
-      <MovieContextParent>
+      {/* <MovieContextParent>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Movie />} />
             <Route path=":MovieId" element={<See />} />
           </Routes>
         </BrowserRouter>
-      </MovieContextParent> */}
-      {/* <Gif /> */}
-      <Toy />
+      </MovieContextParent>{" "}
+      <Gif />
+      <Toy /> */}
     </>
   );
 }

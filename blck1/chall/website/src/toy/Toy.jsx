@@ -3,6 +3,7 @@ import tunel1 from "../imgs/tunel1.png";
 import mouse from "../imgs/mouse.png";
 import tunel2 from "../imgs/tunel2.png";
 import { width } from "@mui/system";
+import Hammer from "../imgs/hammer.png";
 
 const GameOver = ({ totalPoint, totalMin }) => {
   function refreshPage() {
@@ -71,13 +72,15 @@ function Toy() {
 
     setTimeout(() => {
       move[set] = false;
-    }, 700);
+    }, 1500);
   };
   const [mousePosition, setMousePosition] = useState({ x: null, y: null });
+  const [style, setStyle] = useState(false);
   useEffect(() => {
     const mouseMoveHandler = (event) => {
       const { clientX, clientY } = event;
       setMousePosition({ x: clientX, y: clientY });
+      // console.log({ x: clientX }, { y: clientY });
     };
     document.addEventListener("mousemove", mouseMoveHandler);
     return () => {
@@ -111,6 +114,12 @@ function Toy() {
 
   return (
     <body
+      onClick={() => {
+        setStyle(true);
+        setInterval(() => {
+          setStyle(false);
+        }, 100);
+      }}
       style={{
         backgroundColor: min == 0 ? "blue" : "#b40001",
         width: "100vw",
@@ -120,6 +129,21 @@ function Toy() {
       }}
     >
       {min == 0 && <GameOver totalPoint={score} totalMin={min} />}
+      <img
+        src={Hammer}
+        style={{
+          position: "absolute",
+          left: `${mousePosition.x}px`,
+          top: `${mousePosition.y}px`,
+          width: "150px",
+          backgroundColor: "transparent",
+          pointerEvents: "none",
+          zIndex: "9",
+          transform: `${style === true ? "rotate(-120deg)" : "rotate(0deg)"}`,
+          marginTop: "-0px",
+          transition: "0.05s",
+        }}
+      />
       <div
         style={{
           alignItems: "center",

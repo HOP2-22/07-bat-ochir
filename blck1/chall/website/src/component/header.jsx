@@ -19,8 +19,8 @@ function Header() {
   }, []);
   const headerTitles = [
     {
-      name: "Home",
-      path: "/Home",
+      name: "Blog",
+      path: "/Blog",
     },
     {
       name: "Contact",
@@ -29,6 +29,18 @@ function Header() {
     {
       name: "Login",
       path: "/Login",
+    },
+    {
+      name: "Movie",
+      path: "/Movie",
+    },
+    {
+      name: "Game",
+      path: "/Game",
+    },
+    {
+      name: "Giphy",
+      path: "/Giphy",
     },
   ];
   const Team = {

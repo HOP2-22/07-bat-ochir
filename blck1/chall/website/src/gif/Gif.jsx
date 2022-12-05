@@ -31,7 +31,7 @@ function Gif() {
         justifyContent: "start",
       }}
     >
-      <div>
+      <div style={{ marginTop: "100px" }}>
         <div
           style={{
             width: "100vw",
