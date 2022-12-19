@@ -14,11 +14,13 @@ import MovieContextParent from "./Context/Movie-context";
 import See from "./movie/See";
 import Toy from "./toy/Toy";
 import Game from "./purble place/Purple";
+import Bodlogo from "./Lodash/Lodash";
 
 function App() {
   return (
     <>
-      <Game />
+      <Bodlogo />
+      {/* <Game /> */}
       {/* <BrowserRouter>
         <MovieContextParent>
           <ThemeContext>

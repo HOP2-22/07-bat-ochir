@@ -105,7 +105,6 @@ const Card = ({ dataa, min, check, flipCard }) => {
           pointerEvents: `${!check ? "none " : "auto"}`,
         }}
       />
-      <p>{dataa.id}</p>
     </div>
   );
 };
