@@ -1,18 +1,60 @@
 const express = require("express");
-const User = require("../model/post_task");
+const Post = require("../model/post_task");
 //Get List
 exports.getPost = async (req, res) => {
-  const user = User.findById();
+  const user = await Post.find({});
   res.send(user);
 };
-// Get List By User
-// exports.getUserById = async (req, res) => {};
+// getUserById
+exports.getUserById = async (req, res) => {
+  const _id = req.params.id;
+  const user = await Post.findById(_id);
+  res.send(user);
+};
 // // Get List By Tag
-// exports.getPost = async (req, res) => {};
-// // Get Post by id
-// exports.getUpdate = async (req, res) => {};
-// // Create Post
-// exports.getDelete = async (req, res) => {};
-// // Update Post
-// exports.getDelete = async (req, res) => {};
-// // Delete Post
+// exports.getListByTag = async (req, res) => {
+//   const _id = req.params.tag;
+//   const user = await Post.find();
+//   const neww = user.filter((el) => {
+//     const mapedTag = el.tags.map((el, index) => {
+//       console.log(el);
+//       if (_id === el) {
+//         return index;
+//       } else {
+//         return null;
+//       }
+//     });
+//     if (!mapedTag) {
+//       return el.index;
+//     }
+//   });
+
+//   res.send(neww);
+// };
+
+// Create Post
+exports.getPostCreate = async (req, res) => {
+  const user = await Post.create(req.body);
+  res.send(user);
+};
+
+// Delte Post
+exports.getDelete = async (req, res) => {
+  const _id = req.params.id;
+  const user = await Post.findByIdAndDelete(_id);
+  res.send(user);
+};
+//  Update Post
+exports.getUptade = async (req, res) => {
+  const _id = req.params.id;
+  const user = await Post.findByIdAndUpdate(_id, req.body);
+  res.send(user);
+};
+exports.getListBYId = async (req, res) => {
+  const _id = req.params.id;
+  const user = await Post.find();
+  const neww = user.filter((el) => {
+    return el.owneriD === _id;
+  });
+  res.send(neww);
+};

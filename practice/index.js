@@ -12,7 +12,7 @@ connection.once("open", () => {
   console.log("connect MONGODB server");
 });
 app.use(express.json());
-app.use(Router);
+// app.use(Router);
 app.use(Post_Router);
 
 app.listen(Port, () => {
