@@ -12,25 +12,14 @@ exports.getUserById = async (req, res) => {
   res.send(user);
 };
 // // Get List By Tag
-// exports.getListByTag = async (req, res) => {
-//   const _id = req.params.tag;
-//   const user = await Post.find();
-//   const neww = user.filter((el) => {
-//     const mapedTag = el.tags.map((el, index) => {
-//       console.log(el);
-//       if (_id === el) {
-//         return index;
-//       } else {
-//         return null;
-//       }
-//     });
-//     if (!mapedTag) {
-//       return el.index;
-//     }
-//   });
+exports.getListByTag = async (req, res) => {
+  const tag = req.params.tag;
+  const user = await Post.find({
+    tags: [tag],
+  });
 
-//   res.send(neww);
-// };
+  res.send(user);
+};
 
 // Create Post
 exports.getPostCreate = async (req, res) => {
