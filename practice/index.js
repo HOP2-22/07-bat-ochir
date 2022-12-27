@@ -7,13 +7,15 @@ const Port = 8800;
 const app = express();
 const Router = require("./router/router");
 const Post_Router = require("./router/post_router");
+const CommentRouter = require("./router/comment_router.js");
 mongoose.connect(URI);
 connection.once("open", () => {
   console.log("connect MONGODB server");
 });
 app.use(express.json());
-// app.use(Router);
-app.use(Post_Router);
+app.use("/user", Router);
+app.use("/post", Post_Router);
+app.use("/comment", CommentRouter);
 
 app.listen(Port, () => {
   console.log(Port, "listening on port");
