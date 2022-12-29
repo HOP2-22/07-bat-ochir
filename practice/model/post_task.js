@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 
 const Post_task = new Schema({
   owneriD: { type: String, required: true },
-  text: { type: String },
+  text: { type: String, required: true },
   likes: { type: Number },
   tags: { type: Array },
-  publishDate: { type: String },
+  publishDate: { type: Date },
   owner: { type: String },
 });
 

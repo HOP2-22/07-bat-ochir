@@ -1,13 +1,18 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const connection = mongoose.connection;
+
 const URI =
   "mongodb+srv://batuka:batukatoshy@cluster0.trqwvbt.mongodb.net/Practice?retryWrites=true&w=majority";
 const Port = 8800;
+
 const app = express();
+app.use(cors());
 const Router = require("./router/router");
 const Post_Router = require("./router/post_router");
 const CommentRouter = require("./router/comment_router.js");
+
 mongoose.connect(URI);
 connection.once("open", () => {
   console.log("connect MONGODB server");

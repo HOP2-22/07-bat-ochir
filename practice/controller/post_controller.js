@@ -13,9 +13,10 @@ exports.getUserById = async (req, res) => {
 };
 // // Get List By Tag
 exports.getListByTag = async (req, res) => {
-  const tag = req.params.tag;
+  // const tag = req.params.tag;
+
   const user = await Post.find({
-    tags: [tag],
+    tags: ["sport", "eat"],
   });
 
   res.send(user);
