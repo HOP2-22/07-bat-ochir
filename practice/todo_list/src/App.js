@@ -6,18 +6,19 @@ function App() {
   const [desc, setDesc] = useState("");
   const [succes, setSucces] = useState("");
   const [dataa, setDataa] = useState([]);
-
+  const [edit, setEdit] = useState("");
+  const [id, setID] = useState("");
+  const fetchData = async () => {
+    try {
+      const { data } = await axios.get("http://localhost:8800/post");
+      setDataa(data);
+    } catch (error) {
+      console.log("erer");
+    }
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data } = await axios.get("http://localhost:8800/post");
-        setDataa(data);
-      } catch (error) {
-        console.log("erer");
-      }
-    };
     fetchData();
-  }, [succes]);
+  }, []);
   const createPost = async () => {
     try {
       await axios
@@ -31,7 +32,7 @@ function App() {
     }
   };
 
-  const DeletePost = async (id) => {
+  const DeletePost = async () => {
     try {
       const response = await axios.delete(`http://localhost:8800/post/${id}`);
 
@@ -39,6 +40,20 @@ function App() {
       setDataa(temp);
     } catch (error) {
       console.log("erer");
+    }
+  };
+
+  const UpdatePost = async () => {
+    console.log(edit);
+    try {
+      const response = await axios.patch(`http://localhost:8800/post/${id}`, {
+        text: edit,
+      });
+      console.log(response); 
+    } catch (error) {
+      console.log("erer");
+    } finally {
+      fetchData();
     }
   };
   return (
@@ -53,69 +68,84 @@ function App() {
           flexDirection: "column",
         }}
       >
-        <p style={{ color: "purple", fontStyle: "italic", fontSize: "45px" }}>
+        <p style={{ color: "purple", fontStyle: "italic", fontSize: "65px" }}>
           Todo list
         </p>
         <div style={{ display: "flex", gap: "30px" }}>
           <input
             type="text"
             onChange={(e) => {
-              setInputValue(e.target.value);
+              setDesc(e.target.value);
             }}
+            placeholder="Text"
           />
           <input
             type="text"
             onChange={(e) => {
-              setDesc(e.target.value);
+              setInputValue(e.target.value);
             }}
+            placeholder="OwnerID"
           />
           <button
             onClick={(e) => {
               createPost();
               console.log("done");
             }}
-          ></button>
+            style={{ fontSize: "20px", width: "80px" }}
+          >
+            Add{" "}
+          </button>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            gap: "20px",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <input
+            style={{ marginTop: "20px", width: "330px", height: "50px" }}
+            placeholder="Edit Post"
+            onChange={(e) => {
+              setEdit(e.target.value);
+            }}
+          />
+          <button
+            onClick={() => {
+              UpdatePost();
+            }}
+            style={{ width: "100px", height: "55px" }}
+          >
+            Done
+          </button>
         </div>
         <div>
           {dataa.map((el) => {
-            console.log(el);
             return (
               <div
                 style={{
                   display: "flex",
-                  width: "100vw",
+                  width: "450px",
+                  marginTop: "40px",
+                  border: "1px solid black",
                   flexDirection: "row",
                   gap: "20px",
                   justifyContent: "center",
                 }}
               >
-                <div
-                  style={{
-                    border: "1px solid black",
-                    borderRadius: "7px",
-                    marginTop: "10PX",
-                    width: "70px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <p>{el.text}</p>
-                </div>
+                <p>{el.text}</p>
 
-                <div
-                  style={{
-                    border: "1px solid black",
-                    borderRadius: "7px",
-                    marginTop: "10PX",
-                    width: "250px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+                <p>{el.owneriD}</p>
+                <button
+                  onClick={(e) => {
+                    setID(el._id);
+                    console.log(id);
                   }}
                 >
-                  <p>{el.owneriD}</p>
-                </div>
+                  Edit
+                </button>
+
                 <p
                   style={{ fontSize: "25px" }}
                   onClick={() => {
