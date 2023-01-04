@@ -1,9 +1,29 @@
 import React from "react";
-import logo from "../images/logo.png";
-import left from "../images/left.png";
-import mid from "../images/mid.png";
-import rigth from "../images/rigth.png";
+import Navbar from "./Navbar";
+import Logo from "./Logo";
+import Footer from "./Footer";
+import Search from "./Search";
+
 const Menu = () => {
-  return <></>;
+  const path = window.location.pathname;
+  return (
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        padding: 0,
+      }}
+    >
+      <Navbar />
+
+      <Logo />
+      <Search />
+
+      <Footer />
+    </div>
+  );
 };
 export default Menu;

@@ -1,18 +1,18 @@
 import React from "react";
 import Menu from "./component/MenuPage";
-import Navbar from "./component/Navbar";
-import Logo from "./component/Logo";
-import Search from "./component/Search";
-import Footer from "./component/Footer";
+import Login from "./component/Login";
+import Short from "./component/Short";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <Logo />
-      <Search />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Menu />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Done" element={<Short />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -1,15 +1,16 @@
 import React from "react";
 
 const Search = () => {
+  const path = window.location.pathname;
   return (
     <>
-      {" "}
       <div
         style={{
           display: "flex",
           gap: "16px",
           width: "100%",
           justifyContent: "center",
+          marginTop: path == "/" ? "-400px" : "0px",
         }}
       >
         <input
@@ -20,6 +21,7 @@ const Search = () => {
             height: "44px",
             borderRadius: "100px",
             border: "1px solid grey",
+            paddingLeft: "30px",
           }}
         />
         <button

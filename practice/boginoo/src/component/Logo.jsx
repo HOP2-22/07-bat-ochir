@@ -1,10 +1,12 @@
-import React from "react";
+import { useState } from "react";
 import logo from "../images/logo.png";
 import left from "../images/left.png";
 import mid from "../images/mid.png";
 import rigth from "../images/rigth.png";
+import App from "../style/App.css";
 
 const Logo = () => {
+  const [hover, setHover] = useState(true);
   return (
     <div>
       <div
@@ -17,12 +19,19 @@ const Logo = () => {
           justifyContent: "center",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <img src={left} />
-          <img src={mid} />
-          <img src={rigth} />
+        <div
+          style={{ display: "flex", alignItems: "center" }}
+          className="Logo"
+          onMouseOver={(e) => {
+            setHover(!hover);
+            console.log(hover);
+          }}
+        >
+          <img src={left} className="left" />
+          <img src={mid} className="mid" />
+          <img src={rigth} className="rigth" />
         </div>
-        <img src={logo} />
+        <img src={logo} style={{ marginTop: "28px" }} />
       </div>
     </div>
   );

@@ -1,23 +1,40 @@
 import React from "react";
 
 const Navbar = () => {
+  const path = window.location.pathname;
+  console.log(path);
+
   return (
-    <div>
+    <div
+      style={{
+        width: "100vw",
+      }}
+    >
       <div
         style={{
-          width: "100%",
           display: "flex",
           gap: "40px",
           justifyContent: "flex-end",
-          marginTop: "66px",
           alignItems: "center",
+          paddingLeft: "63px ",
+          paddingTop: "60px",
+          paddingRight: "100px ",
+          paddingBottom: "100px",
         }}
       >
-        <p style={{ fontSize: "25px", color: "#02B589", lineHeight: "23px" }}>
+        <p
+          style={{
+            fontSize: "25px",
+            color: "#02B589",
+            lineHeight: "23px",
+          }}
+        >
           Хэрхэн ажилладаж вэ?
         </p>
         <button
           style={{
+            padding: "12px 50px",
+            display: path == "/Login" ? "none" : "flex",
             marginRight: "123px",
             fontSize: "20px",
             borderRadius: "100px",
