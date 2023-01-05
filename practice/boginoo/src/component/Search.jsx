@@ -1,7 +1,36 @@
-import React from "react";
+import axios from "axios";
+import React, { useContext } from "react";
+import { useState } from "react";
+import {
+  Context,
+  inputValue,
+  setInputValue,
+  value,
+  setValue,
+  random,
+  setRandom,
+} from "../Context/Context";
 
 const Search = () => {
+  const [succes, setSucces] = useState("");
+  const { random, setRandom } = useContext(Context);
+  const createPost = async () => {
+    setRandom((Math.random() + 1).toString(36).substring(7));
+    try {
+      await axios
+        .post("http://localhost:8080/user/create", {
+          orignal_link: inputValue,
+          short_link: `www.boginoo.com/${random}`,
+        })
+        .then((el) => setSucces(el));
+    } catch (error) {
+      console.log("erer");
+    }
+  };
   const path = window.location.pathname;
+  const [] = useState("");
+  const { inputValue, setInputValue } = useContext(Context);
+  const { value, setValue } = useContext(Context);
   return (
     <>
       <div
@@ -23,6 +52,10 @@ const Search = () => {
             border: "1px solid grey",
             paddingLeft: "30px",
           }}
+          onChange={(e) => {
+            setInputValue(e.target.value);
+            console.log(inputValue);
+          }}
         />
         <button
           style={{
@@ -33,6 +66,10 @@ const Search = () => {
             borderRadius: "100px",
             color: "white",
             fontSize: "20px",
+          }}
+          onClick={() => {
+            setValue(inputValue);
+            createPost();
           }}
         >
           Богиносгох

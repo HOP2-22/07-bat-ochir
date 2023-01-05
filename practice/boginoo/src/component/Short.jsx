@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+
 import Navbar from "./Navbar";
 import Logo from "./Logo";
 import Footer from "./Footer";
 import Search from "./Search";
+import {
+  Context,
+  inputValue,
+  setInputValue,
+  value,
+  setValue,
+  random,
+  setRandom,
+} from "../Context/Context";
 
 const Short = () => {
+  const { inputValue, setInputValue } = useContext(Context);
+  const { value, setValue } = useContext(Context);
+  const { random, setRandom } = useContext(Context);
+
   return (
     <div
       style={{
@@ -41,18 +55,16 @@ const Short = () => {
           <p style={{ fontSize: "16px", color: "black", opacity: "0.5" }}>
             Өгөгдсөн холбоос:
           </p>
-          <p style={{ fontSize: "20px", color: "black" }}>
-            https://www.web-huudas.mn
-          </p>
+          <p style={{ fontSize: "20px", color: "black" }}>{value}</p>
         </div>
         <div className="">
           <p style={{ fontSize: "16px", color: "black", opacity: "0.5" }}>
             Богино холбоос:
           </p>
           <div style={{ display: "flex", gap: "24px" }}>
-            <p style={{ fontSize: "20px", color: "black" }}>
-              shortly.io/wbmn12
-            </p>
+            <p
+              style={{ fontSize: "20px", color: "black" }}
+            >{`www.boginoo.com/${random}`}</p>
             <p
               style={{
                 fontSize: "20px",
