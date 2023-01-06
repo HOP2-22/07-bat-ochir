@@ -6,5 +6,5 @@ const Task = new Schema({
   short_link: { type: String },
 });
 
-const Data = mongoose.model("Links", Task);
+const Data = mongoose.model("links", Task);
 module.exports = Data;
