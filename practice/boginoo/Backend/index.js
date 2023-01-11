@@ -9,12 +9,12 @@ const Port = process.env.PORT;
 
 const app = express();
 
-// const Router = require("./router/ashgdajhsrouter");
+const Router = require("./router/ashgdajhsrouter");
 
 connect();
 app.use(express.json());
-// app.use("/user", Router);
-app.use("/", USER_Router);
+app.use("/user", Router);
+// app.use("/", USER_Router);
 
 app.listen(Port, () => {
   console.log(Port, "listening on port");

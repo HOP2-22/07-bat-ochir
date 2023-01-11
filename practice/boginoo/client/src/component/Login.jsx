@@ -13,7 +13,6 @@ const Login = () => {
         flexDirection: "column",
         justifyContent: "space-between",
         alignItems: "center",
-        paddingBottom: "100px",
       }}
     >
       <Navbar />
@@ -26,7 +25,6 @@ const Login = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          marginBottom: "400px",
         }}
       >
         <div className="">

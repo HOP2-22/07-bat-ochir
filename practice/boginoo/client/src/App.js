@@ -3,6 +3,7 @@ import Menu from "./component/MenuPage";
 import Login from "./component/Login";
 import Short from "./component/Short";
 import History from "./component/History";
+import "./style/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {

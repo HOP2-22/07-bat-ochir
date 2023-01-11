@@ -12,7 +12,7 @@ const Navbar = () => {
       <div
         style={{
           display: "flex",
-          gap: "40px",
+          gap: "70px",
           justifyContent: "flex-end",
           alignItems: "center",
           paddingLeft: "63px ",
@@ -34,7 +34,7 @@ const Navbar = () => {
           style={{
             padding: "12px 50px",
             display: path == "/Login" ? "none" : "flex",
-            marginRight: "123px",
+
             fontSize: "20px",
             borderRadius: "100px",
             width: "183px",

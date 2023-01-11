@@ -48,7 +48,6 @@ const Short = () => {
           width: "800px",
           display: "flex",
           flexDirection: "column",
-          marginTop: "-200px",
         }}
       >
         <div className="">

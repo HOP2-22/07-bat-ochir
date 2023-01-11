@@ -11,10 +11,12 @@ const Footer = () => {
           width: "100%",
         }}
       >
-        <p style={{ fontSize: "16px" }}>
+        <p style={{ fontSize: "16px", margin: 0 }}>
           Made with ♥️ by Pinecone Academy ..BTK
         </p>
-        <p style={{ fontSize: "16px", color: "grey" }}>©boginoo.io 2023</p>
+        <p style={{ fontSize: "16px", color: "grey", margin: 0 }}>
+          ©boginoo.io 2023
+        </p>
       </div>
     </>
   );

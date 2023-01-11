@@ -18,7 +18,7 @@ const Search = () => {
     setRandom((Math.random() + 1).toString(36).substring(7));
     try {
       await axios
-        .post("http://localhost:8080/user/create", {
+        .post("http://localhost:8080/create", {
           orignal_link: inputValue,
           short_link: `www.boginoo.com/${random}`,
         })
@@ -38,7 +38,6 @@ const Search = () => {
           gap: "16px",
           width: "100%",
           justifyContent: "center",
-          marginTop: path == "/" ? "-400px" : "0px",
         }}
       >
         <input

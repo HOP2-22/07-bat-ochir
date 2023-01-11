@@ -18,9 +18,16 @@ const Menu = () => {
       }}
     >
       <Navbar />
-
-      <Logo />
-      <Search />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "70px",
+        }}
+      >
+        <Logo />
+        <Search />
+      </div>
 
       <Footer />
     </div>

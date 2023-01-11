@@ -24,7 +24,7 @@ const Logo = () => {
           <img src={mid} className="mid" />
           <img src={rigth} className="rigth" />
         </div>
-        <img src={logo} style={{ marginTop: "28px" }} />
+        <img src={logo} />
       </div>
     </div>
   );
