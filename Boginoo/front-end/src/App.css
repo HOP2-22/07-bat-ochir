@@ -13,3 +13,6 @@ body {
 input::placeholder {
   opacity: 30%;
 }
+.input:focus {
+  outline: none;
+}

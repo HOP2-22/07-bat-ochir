@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Footer from "./Footer";
-import Header from "./Header";
+import Footer from "../components/Footer";
+import { Header } from "../components/Header";
 import Logo from "../img/logo-default.png";
 import axios from "axios";
+import eye from "../img/eye.png";
+import hide from "../img/hide.png";
 export default function Signup() {
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
+  const [show, setShow] = useState(false);
+  const [again, setAgain] = useState(false);
   const navigate = useNavigate();
 
   const signUp = async (req, res) => {
     try {
-      await axios.post("http://localhost:7070/sign/createUser", {
+      await axios.post("http://localhost:7070/user/createUser", {
         email: emailValue,
         password: passwordValue,
       });
       alert("User created");
       navigate("/Login");
     } catch (error) {
+      alert("Энэ цахим хаяг бүртгэлтэй байна");
       console.log(error);
     }
   };
@@ -30,10 +35,8 @@ export default function Signup() {
         flexDirection: "column",
         justifyContent: "space-between",
         width: "100%",
-        height: "100%",
       }}
     >
-      <Header />
       <div
         style={{
           display: "flex",
@@ -72,8 +75,8 @@ export default function Signup() {
           </p>
           <input
             style={{
-              height: "44px",
-              width: "351px",
+              height: "50px",
+              width: "380px",
               borderRadius: "100px",
               paddingLeft: "30px",
               fontSize: "20px",
@@ -96,23 +99,39 @@ export default function Signup() {
           >
             Нууц үг
           </p>
-          <input
+          <div
             style={{
-              height: "44px",
-              width: "351px",
+              display: "flex",
+              border: "1px solid grey",
+              padding: "0px 10px",
               borderRadius: "100px",
-              paddingLeft: "30px",
-              fontSize: "20px",
               border: "none",
               outline: "none",
               boxShadow: "0px 0px 15px -10px",
+              alignItems: "center",
+              height: "50px",
             }}
-            placeholder="••••••••••"
-            type="text"
-            onChange={(e) => {
-              setPasswordValue(e.target.value);
-            }}
-          />
+          >
+            <input
+              style={{
+                height: "40px",
+                width: "351px",
+                paddingLeft: "30px",
+                fontSize: "20px",
+                border: "none",
+              }}
+              placeholder="••••••••••"
+              type={`${again ? "password" : "text"}`}
+            />
+            <img
+              src={`${again ? hide : eye}`}
+              style={{ height: "20px" }}
+              onClick={() => {
+                setAgain(!again);
+                console.log(again);
+              }}
+            />
+          </div>
         </div>
         <div>
           <p
@@ -122,20 +141,41 @@ export default function Signup() {
           >
             Нууц үгээ давтна уу?
           </p>
-          <input
+          <div
             style={{
-              height: "44px",
-              width: "351px",
+              display: "flex",
+              border: "1px solid grey",
+              padding: "0px 10px",
               borderRadius: "100px",
-              paddingLeft: "30px",
-              fontSize: "20px",
               border: "none",
               outline: "none",
               boxShadow: "0px 0px 15px -10px",
+              alignItems: "center",
+              height: "50px",
             }}
-            placeholder="••••••••••"
-            type="text"
-          />
+          >
+            <input
+              style={{
+                height: "40px",
+                width: "351px",
+                paddingLeft: "30px",
+                fontSize: "20px",
+                border: "none",
+              }}
+              placeholder="••••••••••"
+              type={`${show ? "password" : "text"}`}
+              onChange={(e) => {
+                setPasswordValue(e.target.value);
+              }}
+            />
+            <img
+              src={`${show ? hide : eye}`}
+              style={{ height: "20px" }}
+              onClick={() => {
+                setShow(!show);
+              }}
+            />
+          </div>
         </div>
         <div
           style={{
@@ -177,7 +217,6 @@ export default function Signup() {
           Шинэ хэрэглэгч бол энд дарна уу?
         </a>
       </div>
-      <Footer />
     </div>
   );
 }

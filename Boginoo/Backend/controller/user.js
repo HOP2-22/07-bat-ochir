@@ -1,39 +1,76 @@
 const express = require("express");
-const Data = require("../model/Task");
+const Data = require("../model/user.js");
 
-exports.getUser = async (req, res) => {
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+
+exports.createUser = async (req, res) => {
   try {
-    const user = await Data.find();
-    console.log(Data);
-    res.status(200).json(user);
+    const { email, password } = req.body;
+
+    const salt = await bcrypt.genSalt(10);
+
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    const newUser = await Data.create({
+      email: email,
+      password: hashedPassword,
+    });
+
+    res.status(200).json(newUser);
   } catch (error) {
-    res.status(404).json({ error: error });
+    res.status(400).json(error);
   }
 };
-exports.getPost = (req, res) => {
-  try {
-    const user = Data.create(req.body);
-    res.status(200).json(user);
-  } catch (error) {
-    res.status(404).json({ error: error });
-  }
+exports.getUsers = async (req, res) => {
+  const users = await Data.find();
+
+  res.status(200).json(users);
 };
-
-exports.createShort = async (req, res) => {
-  let stringId = (Math.random() + 1).toString(36).substring(7);
-
-  const createdShort = await Data.create({
-    orignal_link: req.body.orignal_link,
-    short_link: stringId,
+exports.getUserByEmail = async (req, res) => {
+  const user = await Data.find({
+    email: req.params.id,
   });
-  res.send(createdShort);
+
+  res.status(200).json(user);
 };
-exports.deleteShort = async (req, res) => {
+
+const ACCESS_TOKEN_KEY = "secret123";
+
+exports.login = async (req, res, next) => {
   try {
-    const id = req.params.id;
-    const delete_short = await Data.findByIdAndDelete(id);
-    res.status(200).json(delete_short);
+    const { email, password } = req.body;
+    const user = await Data.findOne({ email: email });
+    const match = await bcrypt.compare(password, user.password);
+    if (!match) {
+      return res.status(400).json({ message: "password is dont match" });
+    }
+    const token = jwt.sign(
+      {
+        user: user.email,
+      },
+      ACCESS_TOKEN_KEY
+    );
+
+    res.status(200).json({ match: match, user: user });
   } catch (error) {
-    res.status(404).json(error.message);
+    res.status(400).json({ message: "password is dont match" });
   }
+};
+exports.updateUserPass = async (req, res, next) => {
+  const { email, password } = req.body;
+
+  const salt = await bcrypt.genSalt(10);
+
+  const hashedPassword = await bcrypt.hash(password, salt);
+
+  const updatedUser = await Data.findOneAndUpdate(
+    { email: email },
+    { password: hashedPassword },
+    {
+      runValidators: true,
+    }
+  );
+
+  res.status(200).json(updatedUser);
 };

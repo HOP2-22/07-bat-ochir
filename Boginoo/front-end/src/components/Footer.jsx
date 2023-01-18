@@ -10,13 +10,7 @@ export default function Footer() {
         alignItems: "center",
       }}
     >
-      <p
-        style={{
-          margin: "0",
-        }}
-      >
-        Made with ♥️ by Nest Academy
-      </p>
+      <p>Made with ♥️ by Nest Academy</p>
       <p
         style={{
           opacity: "30%",

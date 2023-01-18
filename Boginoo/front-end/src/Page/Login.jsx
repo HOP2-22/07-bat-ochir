@@ -1,28 +1,20 @@
-import React, { useState } from "react";
-import Footer from "./Footer";
-import Header from "./Header";
+import React, { useContext, useState } from "react";
+import Footer from "../components/Footer";
+import { Header } from "../components/Header";
 import Logo from "../img/logo-default.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import eye from "../img/eye.png";
+import hide from "../img/hide.png";
+import { Context } from "../Context/Context";
+import app from "../App.css";
 
 export default function Login() {
+  const { Login } = useContext(Context);
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
-  const navigate = useNavigate();
-
-  const Login = async (req, res) => {
-    try {
-      const user = await axios.post("http://localhost:7070/sign/login", {
-        email: emailValue,
-        password: passwordValue,
-      });
-      alert("User login successfully");
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [show, setShow] = useState(true);
 
   return (
     <div
@@ -31,11 +23,9 @@ export default function Login() {
         flexDirection: "column",
         justifyContent: "space-between",
         alignItems: "center",
-        height: "100%",
         width: "100%",
       }}
     >
-      <Header />
       <div
         style={{
           display: "flex",
@@ -85,6 +75,9 @@ export default function Login() {
             }}
             placeholder="name@mail.domain"
             type="text"
+            onChange={(e) => {
+              setEmailValue(e.target.value);
+            }}
           />
         </div>
         <div>
@@ -95,20 +88,40 @@ export default function Login() {
           >
             Нууц үг
           </p>
-          <input
+          <div
             style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-around",
               height: "44px",
-              width: "351px",
-              borderRadius: "100px",
-              paddingLeft: "30px",
-              fontSize: "20px",
+              width: "380px",
               border: "none",
               outline: "none",
               boxShadow: "0px 0px 15px -10px",
+              borderRadius: "100px",
             }}
-            placeholder="••••••••••"
-            type="text"
-          />
+          >
+            <input
+              style={{
+                border: "none ",
+                fontSize: "20px",
+              }}
+              focus
+              placeholder="••••••••••"
+              type={`${show ? "text" : "password"}`}
+              onChange={(e) => {
+                setPasswordValue(e.target.value);
+              }}
+              className="input"
+            />
+            <img
+              style={{ width: "22px" }}
+              src={`${show ? hide : eye}`}
+              onClick={() => {
+                setShow(!show);
+              }}
+            />
+          </div>
         </div>
         <div
           style={{
@@ -161,7 +174,7 @@ export default function Login() {
             paddingRight: "145px",
           }}
           onClick={() => {
-            Login();
+            Login({ user: emailValue, password: passwordValue });
           }}
         >
           НЭВТРЭХ
@@ -177,7 +190,6 @@ export default function Login() {
           Шинэ хэрэглэгч бол энд дарна уу?
         </a>
       </div>
-      <Footer />
     </div>
   );
 }
