@@ -8,7 +8,7 @@ export const Header = () => {
   const path = window.location.pathname;
   useEffect(() => {
     if (user) {
-      navigate("/");
+      navigate("/userProfile");
     }
   }, [user]);
   return (
