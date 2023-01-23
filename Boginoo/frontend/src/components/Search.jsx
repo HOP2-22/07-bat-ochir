@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Context } from "../Context/Context";
 
 function Search() {
-  const { createPost, inputValue, setInputValue, orignal, setOrignal } =
+  const { createPost, inputValue, setInputValue, User_post } =
     useContext(Context);
 
   return (
@@ -37,7 +37,6 @@ function Search() {
         <button
           onClick={() => {
             createPost();
-            setOrignal(inputValue);
           }}
           style={{
             height: "100%",

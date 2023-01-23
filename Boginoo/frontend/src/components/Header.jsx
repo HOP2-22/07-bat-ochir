@@ -4,13 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../Context/Context";
 export const Header = () => {
   const { user } = useContext(Context);
+
   const navigate = useNavigate();
   const path = window.location.pathname;
-  useEffect(() => {
-    if (user) {
-      navigate("/userProfile");
-    }
-  }, [user]);
   return (
     <div
       style={{
@@ -41,6 +37,7 @@ export const Header = () => {
         >
           ХЭРХЭН АЖИЛЛАДАЖ ВЭ?
         </p>
+
         {user ? (
           <div>{user.email}</div>
         ) : (

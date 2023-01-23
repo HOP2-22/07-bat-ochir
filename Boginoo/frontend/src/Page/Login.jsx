@@ -1,39 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
 import Footer from "../components/Footer";
 import { Header } from "../components/Header";
 import Logo from "../img/logo-default.png";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import eye from "../img/eye.png";
 import hide from "../img/hide.png";
-export default function Signup() {
-  const [emailValue, setEmailValue] = useState("");
-  const [passwordValue, setPasswordValue] = useState("");
-  const [show, setShow] = useState(false);
-  const [again, setAgain] = useState(false);
-  const navigate = useNavigate();
+import { Context } from "../Context/Context";
+import app from "../App.css";
 
-  const signUp = async (req, res) => {
-    try {
-      await axios.post("http://localhost:7070/user/createUser", {
-        email: emailValue,
-        password: passwordValue,
-      });
-      alert("User created");
-      navigate("/Login");
-    } catch (error) {
-      alert("Энэ цахим хаяг бүртгэлтэй байна");
-      console.log(error);
-    }
-  };
+export default function Login() {
+  const { Login, emailValue, passwordValue, setEmailValue, setPasswordValue } =
+    useContext(Context);
 
-  const path = window.location.pathname;
+  const [show, setShow] = useState(true);
+
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
+        alignItems: "center",
         width: "100%",
       }}
     >
@@ -75,8 +64,8 @@ export default function Signup() {
           </p>
           <input
             style={{
-              height: "50px",
-              width: "380px",
+              height: "44px",
+              width: "351px",
               borderRadius: "100px",
               paddingLeft: "30px",
               fontSize: "20px",
@@ -86,6 +75,7 @@ export default function Signup() {
             }}
             placeholder="name@mail.domain"
             type="text"
+            value={emailValue}
             onChange={(e) => {
               setEmailValue(e.target.value);
             }}
@@ -102,75 +92,32 @@ export default function Signup() {
           <div
             style={{
               display: "flex",
-              border: "1px solid grey",
-              padding: "0px 10px",
-              borderRadius: "100px",
+              alignItems: "center",
+              justifyContent: "space-around",
+              height: "44px",
+              width: "380px",
               border: "none",
               outline: "none",
               boxShadow: "0px 0px 15px -10px",
-              alignItems: "center",
-              height: "50px",
+              borderRadius: "100px",
             }}
           >
             <input
               style={{
-                height: "40px",
-                width: "351px",
-                paddingLeft: "30px",
+                border: "none ",
                 fontSize: "20px",
-                border: "none",
               }}
+              value={passwordValue}
               placeholder="••••••••••"
-              type={`${again ? "password" : "text"}`}
-            />
-            <img
-              src={`${again ? hide : eye}`}
-              style={{ height: "20px" }}
-              onClick={() => {
-                setAgain(!again);
-                console.log(again);
-              }}
-            />
-          </div>
-        </div>
-        <div>
-          <p
-            style={{
-              marginLeft: "15px",
-            }}
-          >
-            Нууц үгээ давтна уу?
-          </p>
-          <div
-            style={{
-              display: "flex",
-              border: "1px solid grey",
-              padding: "0px 10px",
-              borderRadius: "100px",
-              border: "none",
-              outline: "none",
-              boxShadow: "0px 0px 15px -10px",
-              alignItems: "center",
-              height: "50px",
-            }}
-          >
-            <input
-              style={{
-                height: "40px",
-                width: "351px",
-                paddingLeft: "30px",
-                fontSize: "20px",
-                border: "none",
-              }}
-              placeholder="••••••••••"
-              type={`${show ? "password" : "text"}`}
+              type={`${show ? "text" : "password"}`}
               onChange={(e) => {
                 setPasswordValue(e.target.value);
               }}
+              className="input"
             />
             <img
+              style={{ width: "22px" }}
               src={`${show ? hide : eye}`}
-              style={{ height: "20px" }}
               onClick={() => {
                 setShow(!show);
               }}
@@ -185,7 +132,35 @@ export default function Signup() {
             justifyContent: "space-between",
             alignItems: "center",
           }}
-        ></div>
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "5px",
+              color: "#02B589",
+            }}
+          >
+            <input
+              label="Намайг сана"
+              className="checkbox"
+              style={{
+                height: "20px",
+                width: "20px",
+              }}
+              type="checkbox"
+            />
+            <p>Намайг сана</p>
+          </div>
+          <a
+            style={{
+              color: "black",
+            }}
+            href="none"
+          >
+            Нууц үгээ мартсан
+          </a>
+        </div>
         <button
           style={{
             height: "44px",
@@ -200,19 +175,18 @@ export default function Signup() {
             paddingRight: "145px",
           }}
           onClick={() => {
-            signUp();
+            Login();
           }}
         >
           НЭВТРЭХ
         </button>
         <a
           style={{
-            display: path === "/signup" ? "none" : "block",
             color: "#02B589",
             padding: "15px",
             fontSize: "16px",
           }}
-          href="none"
+          href="signup"
         >
           Шинэ хэрэглэгч бол энд дарна уу?
         </a>

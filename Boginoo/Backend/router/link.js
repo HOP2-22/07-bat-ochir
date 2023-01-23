@@ -1,4 +1,5 @@
 const express = require("express");
+const Data = require("../model/link");
 const Router = express.Router();
 const {
   getUser,
@@ -6,6 +7,10 @@ const {
   createShort,
   getLinkByUser,
 } = require("../controller/link.js");
+Router.delete("/deleteAll", async (req, res) => {
+  await Data.deleteMany();
+  res.json({ success: true });
+});
 
 Router.get("/", getUser);
 Router.post("/", createShort);

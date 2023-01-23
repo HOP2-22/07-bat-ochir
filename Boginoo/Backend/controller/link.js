@@ -20,13 +20,13 @@ exports.getPost = (req, res) => {
 };
 
 exports.createShort = async (req, res) => {
-  const ownerId = "63c4ed5f378fdc4debc345cf";
+  const { ownerID } = req.body;
   let stringId = (Math.random() + 1).toString(36).substring(7);
 
   const createdShort = await Data.create({
     orignal_link: req.body.orignal_link,
     short_link: stringId,
-    ownerID: ownerId,
+    ownerID: ownerID,
   });
   res.send(createdShort);
 };

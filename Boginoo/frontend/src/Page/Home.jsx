@@ -1,14 +1,10 @@
-import { Header } from "../components/Header";
 import Logo from "../components/Logo";
 import Search from "../components/Search";
-import Footer from "../components/Footer";
 import { Context } from "../Context/Context";
-import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useContext } from "react";
 
-function User_profile() {
-  const { orignal, short } = useContext(Context);
+function Home() {
+  const { userData } = useContext(Context);
   return (
     <div
       style={{
@@ -23,6 +19,7 @@ function User_profile() {
         <Logo />
         <Search />
       </div>
+
       <div>
         <p style={{ color: "#02B589", fontStyle: "bold", fontSize: "32px" }}>
           Түүх
@@ -34,9 +31,11 @@ function User_profile() {
             <p>Богино холбоос:</p>
           </div>
           <div className="" style={{ display: "flex", gap: "138px" }}>
-            <p>{orignal}</p>
             <div style={{ display: "flex", gap: "25px" }}>
-              <p>{short}</p>
+              {userData?.data.map((el, index) => {
+                return <div>asdjas</div>;
+              })}
+              <p></p>
               <p style={{ color: " #02B589", textDecoration: "underline" }}>
                 Хуулж авах
               </p>
@@ -47,4 +46,4 @@ function User_profile() {
     </div>
   );
 }
-export default User_profile;
+export default Home;
