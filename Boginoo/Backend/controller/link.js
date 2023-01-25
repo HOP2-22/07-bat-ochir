@@ -47,3 +47,13 @@ exports.getLinkByUser = async (req, res) => {
   console.log(Links);
   res.status(200).json(Links);
 };
+exports.getBackLink = async (req, res) => {
+  try {
+    const { shortlink } = req.params;
+    console.log(shortlink);
+    const Links = await Data.findOne({ short_link: shortlink });
+    res.status(200).json(Links);
+  } catch (error) {
+    res.status(404).json(error.message);
+  }
+};

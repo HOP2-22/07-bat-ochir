@@ -37,6 +37,7 @@ function Search() {
         <button
           onClick={() => {
             createPost();
+            console.log(inputValue);
           }}
           style={{
             height: "100%",

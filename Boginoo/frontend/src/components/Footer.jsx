@@ -3,6 +3,7 @@ import React from "react";
 export default function Footer() {
   return (
     <div
+      className="pb-10"
       style={{
         width: "100%",
         display: "flex",

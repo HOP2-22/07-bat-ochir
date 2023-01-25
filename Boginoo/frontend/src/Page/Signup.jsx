@@ -6,11 +6,12 @@ import Logo from "../img/logo-default.png";
 import axios from "axios";
 import eye from "../img/eye.png";
 import hide from "../img/hide.png";
+import app from "../App.css";
 export default function Signup() {
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
-  const [show, setShow] = useState(false);
-  const [again, setAgain] = useState(false);
+  const [show, setShow] = useState(true);
+  const [again, setAgain] = useState(true);
 
   const navigate = useNavigate();
 
@@ -90,6 +91,7 @@ export default function Signup() {
             onChange={(e) => {
               setEmailValue(e.target.value);
             }}
+            className="input"
           />
         </div>
         <div>
@@ -121,11 +123,12 @@ export default function Signup() {
                 fontSize: "20px",
                 border: "none",
               }}
+              className="input"
               placeholder="••••••••••"
               type={`${again ? "password" : "text"}`}
             />
             <img
-              src={`${again ? hide : eye}`}
+              src={`${again ? eye : hide}`}
               style={{ height: "20px" }}
               onClick={() => {
                 setAgain(!again);
@@ -163,6 +166,7 @@ export default function Signup() {
                 fontSize: "20px",
                 border: "none",
               }}
+              className="input"
               placeholder="••••••••••"
               type={`${show ? "password" : "text"}`}
               onChange={(e) => {
@@ -170,7 +174,7 @@ export default function Signup() {
               }}
             />
             <img
-              src={`${show ? hide : eye}`}
+              src={`${show ? eye : hide}`}
               style={{ height: "20px" }}
               onClick={() => {
                 setShow(!show);

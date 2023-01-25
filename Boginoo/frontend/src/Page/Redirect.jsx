@@ -5,8 +5,17 @@ import axios from "axios";
 const Redirect = () => {
   const { redirect } = useParams();
   useEffect(() => {
-    window.location.href =
-      "https://github.com/lovasoa/react-contenteditable/issues/65";
+    const redToURL = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:7070/link/next/${redirect}`
+        );
+        window.location.href = res.data.orignal_link;
+      } catch (error) {
+        console.log("aldaa");
+      }
+    };
+    redToURL();
   }, []);
   return <div>Redirect</div>;
 };

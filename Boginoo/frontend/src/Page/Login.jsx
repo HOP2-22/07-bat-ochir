@@ -14,7 +14,11 @@ export default function Login() {
   const { Login, emailValue, passwordValue, setEmailValue, setPasswordValue } =
     useContext(Context);
 
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
+
+  const handleLogin = () => {
+    Login();
+  };
 
   return (
     <div
@@ -95,7 +99,7 @@ export default function Login() {
               alignItems: "center",
               justifyContent: "space-around",
               height: "44px",
-              width: "380px",
+              width: "350px",
               border: "none",
               outline: "none",
               boxShadow: "0px 0px 15px -10px",
@@ -174,9 +178,7 @@ export default function Login() {
             paddingLeft: "145px",
             paddingRight: "145px",
           }}
-          onClick={() => {
-            Login();
-          }}
+          onClick={handleLogin}
         >
           НЭВТРЭХ
         </button>

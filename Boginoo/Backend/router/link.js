@@ -6,6 +6,7 @@ const {
   deleteShort,
   createShort,
   getLinkByUser,
+  getBackLink,
 } = require("../controller/link.js");
 Router.delete("/deleteAll", async (req, res) => {
   await Data.deleteMany();
@@ -16,6 +17,7 @@ Router.get("/", getUser);
 Router.post("/", createShort);
 Router.delete("/:id", deleteShort);
 Router.get("/:usernameId", getLinkByUser);
+Router.get("/next/:shortlink", getBackLink);
 
 // Router.patch("/update", getUpdate);
 // Router.delete("/delete", getDelete);

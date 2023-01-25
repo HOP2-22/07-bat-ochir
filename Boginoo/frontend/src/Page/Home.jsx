@@ -2,13 +2,30 @@ import Logo from "../components/Logo";
 import Search from "../components/Search";
 import { Context } from "../Context/Context";
 import { useContext } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Home() {
-  const { userData } = useContext(Context);
+  const { user, checkUpdates } = useContext(Context);
+  const navigate = useNavigate();
+  const [links, setLinks] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const res = await axios.get(`http://localhost:7070/link/${user?._id}`);
+      setLinks(res?.data);
+    };
+    getData();
+
+    console.log(links);
+  }, [checkUpdates]);
+
   return (
     <div
+      className="py-[300px]"
       style={{
-        height: "100vh",
+        height: "100%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -19,29 +36,37 @@ function Home() {
         <Logo />
         <Search />
       </div>
-
-      <div>
-        <p style={{ color: "#02B589", fontStyle: "bold", fontSize: "32px" }}>
-          Түүх
-        </p>
-
-        <div style={{ borderBottom: "1px solid #E2E2E2" }}>
-          <div className="" style={{ display: "flex", gap: "200px" }}>
-            <p>Өгөгдсөн холбоос:</p>
-            <p>Богино холбоос:</p>
-          </div>
-          <div className="" style={{ display: "flex", gap: "138px" }}>
-            <div style={{ display: "flex", gap: "25px" }}>
-              {userData?.data.map((el, index) => {
-                return <div>asdjas</div>;
-              })}
-              <p></p>
-              <p style={{ color: " #02B589", textDecoration: "underline" }}>
-                Хуулж авах
-              </p>
+      <div className="w-[730px]">
+        <p className="text-3xl font-bold text-[#02B589] pt-10 mb-4">Түүх</p>
+        {links?.map((el, index) => {
+          return (
+            <div
+              className="w-full border-b pb-4 flex justify-between mb-2"
+              key={index}
+            >
+              <div className="">
+                <p className="text-[]">Өгөгдсөн холбоос:</p>
+                <p>{el?.orignal_link}</p>
+              </div>
+              <div className="flex gap-8 items-end w-[300px]">
+                <div className="flex flex-col ">
+                  <p>Богино холбоос:</p>
+                  <p>http://localhost:3000/{el?.short_link}</p>
+                </div>
+                <div
+                  className="text-[#02B589] underline"
+                  onClick={() => {
+                    navigator.clipboard.writeText(
+                      `http://localhost:3000/${el?.short_link}`
+                    );
+                  }}
+                >
+                  Хуулж авах
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          );
+        })}
       </div>
     </div>
   );

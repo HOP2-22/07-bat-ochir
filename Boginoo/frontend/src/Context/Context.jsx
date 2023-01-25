@@ -12,7 +12,7 @@ export function Provider({ children }) {
     navigate("/home");
   };
 
-  const [userData, setUserData] = useState([]);
+  const [userData, setUserData] = useState();
   const [user, setUser] = useState();
   const [inputValue, setInputValue] = useState("");
   const [short, setShort] = useState("");
@@ -20,6 +20,7 @@ export function Provider({ children }) {
   const [ownerEmail, setOwnerEmail] = useState("");
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
+  const [checkUpdates, setCheckUpdates] = useState(false);
 
   const Login = async () => {
     try {
@@ -27,27 +28,13 @@ export function Provider({ children }) {
         email: emailValue,
         password: passwordValue,
       });
-      console.log(res);
+
       setUser(res?.data?.user);
-      User_post();
+      navigate("/home");
+
+      // User_post();
     } catch (error) {
       alert("Нууц үг эсвэл Цахим хаяг буруу байна");
-    }
-  };
-
-  const User_post = async () => {
-    try {
-      const res = await axios.get(`http://localhost:7070/link/${emailValue}`);
-      console.log(res);
-      setUserData(res);
-      setTimeout(() => {
-        handleProfile();
-      }, [800]);
-      handleProfile();
-    } catch (error) {
-      console.log("asdhjaks");
-
-      console.log(error);
     }
   };
 
@@ -57,10 +44,10 @@ export function Provider({ children }) {
         orignal_link: inputValue,
         ownerID: user._id,
       });
-      console.log(shortRes);
+
       setOrignal(inputValue);
       setShort(shortRes?.data?.short_link);
-      User_post();
+      setCheckUpdates(!checkUpdates);
     } catch (error) {
       console.log("erer");
     }
@@ -70,6 +57,7 @@ export function Provider({ children }) {
     <Context.Provider
       value={{
         user,
+        checkUpdates,
 
         inputValue,
         setInputValue,
@@ -94,7 +82,6 @@ export function Provider({ children }) {
         //function
         createPost,
         Login,
-        User_post,
       }}
     >
       {children}

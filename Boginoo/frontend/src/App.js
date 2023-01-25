@@ -12,19 +12,21 @@ import Redirect from "./Page/Redirect";
 
 function App() {
   return (
-    <BrowserRouter className="app">
-      <Provider>
-        <Layout>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/" exact element={<Outside />} />
-            <Route path="/:redirect" element={<Redirect />} />
-          </Routes>
-        </Layout>
-      </Provider>
-    </BrowserRouter>
+    <div className="w-full h-screen">
+      <BrowserRouter className="app">
+        <Provider>
+          <Layout>
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/:redirect" element={<Redirect />} />
+              <Route path="/" exact element={<Outside />} />
+            </Routes>
+          </Layout>
+        </Provider>
+      </BrowserRouter>
+    </div>
   );
 }
 

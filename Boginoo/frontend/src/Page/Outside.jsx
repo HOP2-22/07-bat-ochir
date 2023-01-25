@@ -8,14 +8,18 @@ export default function Outside() {
       style={{
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
+        justifyContent: "center",
         alignItems: "center",
-        height: "50%",
+
+        height: "100%",
         width: "100%",
       }}
     >
-      <Logo />
-      <Search />
+      <div className="flex flex-col gap-6">
+        <Logo />
+        <Search />
+      </div>
+      <div></div>
     </div>
   );
 }
