@@ -28,7 +28,7 @@ export function Provider({ children }) {
         email: emailValue,
         password: passwordValue,
       });
-
+      console.log(res);
       setUser(res?.data?.user);
       navigate("/home");
 
@@ -40,9 +40,9 @@ export function Provider({ children }) {
 
   const createPost = async () => {
     try {
-      const shortRes = await axios.post("http://localhost:7070/link/", {
+      const shortRes = await axios.post("http://localhost:7070/link", {
         orignal_link: inputValue,
-        ownerID: user._id,
+        ownerID: user?._id,
       });
 
       setOrignal(inputValue);

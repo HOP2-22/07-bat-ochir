@@ -20,14 +20,16 @@ exports.getPost = (req, res) => {
 };
 
 exports.createShort = async (req, res) => {
-  const { ownerID } = req.body;
+  const { ownerID, orignal_link } = req.body;
   let stringId = (Math.random() + 1).toString(36).substring(7);
 
+  console.log(ownerID);
   const createdShort = await Data.create({
-    orignal_link: req.body.orignal_link,
+    orignal_link: orignal_link,
     short_link: stringId,
     ownerID: ownerID,
   });
+  console.log(createdShort);
   res.send(createdShort);
 };
 exports.deleteShort = async (req, res) => {
