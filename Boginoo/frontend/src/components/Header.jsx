@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../Context/Context";
-export const Header = () => {
-  const { user } = useContext(Context);
+import Logout from "../img/exit.png";
 
+export const Header = () => {
+  const { user, setUser } = useContext(Context);
+  const [logout, setlogout] = useState(false);
   const navigate = useNavigate();
   const path = window.location.pathname;
   return (
@@ -39,7 +41,17 @@ export const Header = () => {
         </p>
 
         {user ? (
-          <div>{user.email}</div>
+          <div className="flex gap-4  items-center">
+            <div className="text-[30px]">{user.email}</div>
+            <img
+              src={Logout}
+              className="w-6"
+              onClick={() => {
+                navigate("/login  ");
+                setUser("");
+              }}
+            />
+          </div>
         ) : (
           <Link
             style={{

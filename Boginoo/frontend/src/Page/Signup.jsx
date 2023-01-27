@@ -9,6 +9,7 @@ import hide from "../img/hide.png";
 import app from "../App.css";
 export default function Signup() {
   const [emailValue, setEmailValue] = useState("");
+  const [passwordCheckValue, setPassworCheckdValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [show, setShow] = useState(true);
   const [again, setAgain] = useState(true);
@@ -16,16 +17,20 @@ export default function Signup() {
   const navigate = useNavigate();
 
   const signUp = async (req, res) => {
-    try {
-      await axios.post("http://localhost:7070/user/createUser", {
-        email: emailValue,
-        password: passwordValue,
-      });
-      alert("User created");
-      navigate("/Login");
-    } catch (error) {
-      alert("Энэ цахим хаяг бүртгэлтэй байна");
-      console.log(error);
+    if (passwordValue == passwordCheckValue) {
+      try {
+        await axios.post("http://localhost:7070/user/createUser", {
+          email: emailValue,
+          password: passwordValue,
+        });
+        alert("User created");
+        navigate("/Login");
+      } catch (error) {
+        alert("Энэ цахим хаяг бүртгэлтэй байна эсвэл цахим хаяг биш байна");
+        console.log(error);
+      }
+    } else {
+      alert("Нууц үг тохирохгүй байна");
     }
   };
 
@@ -35,8 +40,9 @@ export default function Signup() {
       style={{
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
+        justifyContent: "center",
         width: "100%",
+        height: "100vh",
       }}
     >
       <div
@@ -64,7 +70,7 @@ export default function Signup() {
               fontWeight: "bold",
             }}
           >
-            Нэвтрэх
+            Бүртгүүлэх
           </p>
         </div>
         <div>
@@ -123,6 +129,9 @@ export default function Signup() {
                 fontSize: "20px",
                 border: "none",
               }}
+              onChange={(e) => {
+                setPasswordValue(e.target.value);
+              }}
               className="input"
               placeholder="••••••••••"
               type={`${again ? "password" : "text"}`}
@@ -166,12 +175,12 @@ export default function Signup() {
                 fontSize: "20px",
                 border: "none",
               }}
+              onChange={(e) => {
+                setPassworCheckdValue(e.target.value);
+              }}
               className="input"
               placeholder="••••••••••"
               type={`${show ? "password" : "text"}`}
-              onChange={(e) => {
-                setPasswordValue(e.target.value);
-              }}
             />
             <img
               src={`${show ? eye : hide}`}

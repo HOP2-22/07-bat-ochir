@@ -2,17 +2,14 @@ import axios from "axios";
 import React, { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import cookie from "js-cookie";
+import validator from "validator";
 
 export const Context = createContext({});
 
 export function Provider({ children }) {
   const navigate = useNavigate();
-
-  const handleProfile = () => {
-    navigate("/home");
-  };
-
   const [userData, setUserData] = useState();
+  const [outside, setOutside] = useState();
   const [user, setUser] = useState();
   const [inputValue, setInputValue] = useState("");
   const [short, setShort] = useState("");
@@ -39,17 +36,21 @@ export function Provider({ children }) {
   };
 
   const createPost = async () => {
-    try {
-      const shortRes = await axios.post("http://localhost:7070/link", {
-        orignal_link: inputValue,
-        ownerID: user?._id,
-      });
-
-      setOrignal(inputValue);
-      setShort(shortRes?.data?.short_link);
-      setCheckUpdates(!checkUpdates);
-    } catch (error) {
-      console.log("erer");
+    if (validator.isURL(inputValue)) {
+      try {
+        const shortRes = await axios.post("http://localhost:7070/link", {
+          orignal_link: inputValue,
+          ownerID: user?._id,
+        });
+        setOutside(shortRes);
+        setOrignal(inputValue);
+        setShort(shortRes?.data?.short_link);
+        setCheckUpdates(!checkUpdates);
+      } catch (error) {
+        console.log("erer");
+      }
+    } else {
+      alert("Is Not Valid URL");
     }
   };
 
@@ -57,10 +58,14 @@ export function Provider({ children }) {
     <Context.Provider
       value={{
         user,
+        setUser,
+
         checkUpdates,
 
         inputValue,
         setInputValue,
+
+        outside,
 
         orignal,
         setOrignal,

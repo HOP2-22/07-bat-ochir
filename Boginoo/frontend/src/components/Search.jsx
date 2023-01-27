@@ -13,7 +13,7 @@ function Search() {
           width: "100%",
           display: "flex",
           justifyContent: "center",
-          gap: "1%",
+          gap: "3%",
         }}
       >
         <input
@@ -37,7 +37,6 @@ function Search() {
         <button
           onClick={() => {
             createPost();
-            console.log(inputValue);
           }}
           style={{
             height: "100%",

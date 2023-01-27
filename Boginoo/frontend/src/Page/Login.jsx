@@ -25,9 +25,11 @@ export default function Login() {
       style={{
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
         alignItems: "center",
         width: "100%",
+        height: "100vh",
+        alignItems: "center",
+        paddingTop: "250px",
       }}
     >
       <div
@@ -165,6 +167,7 @@ export default function Login() {
             Нууц үгээ мартсан
           </a>
         </div>
+
         <button
           style={{
             height: "44px",

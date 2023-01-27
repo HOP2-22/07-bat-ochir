@@ -37,6 +37,9 @@ module.exports = {
         mulish: ["Mulish"],
         ubuntu: ["Ubuntu"],
       },
+      colors: {
+        main: "#02B589",
+      },
     },
   },
   plugins: [],
