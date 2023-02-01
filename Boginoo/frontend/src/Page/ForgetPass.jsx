@@ -1,7 +1,9 @@
 import React from "react";
 import Logo from "../components/Logo";
+import { useNavigate } from "react-router-dom";
 
 function Forgetpass() {
+  const navigate = useNavigate();
   const sendmail = () => {};
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center gap-[50px]">

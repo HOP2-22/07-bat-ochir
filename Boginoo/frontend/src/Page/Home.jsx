@@ -11,16 +11,6 @@ function Home() {
   const navigate = useNavigate();
   const [links, setLinks] = useState([]);
 
-  useEffect(() => {
-    const getData = async () => {
-      const res = await axios.get(`http://localhost:7070/link/${user?._id}`);
-      setLinks(res?.data);
-    };
-    getData();
-
-    console.log(links);
-  }, [checkUpdates]);
-
   return (
     <div
       className="py-[300px]"

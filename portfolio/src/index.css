@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.ligth {
+  @apply bg-[#F1E6DC];
+}
+
+.dark {
+  @apply bg-[#202023];
+}

@@ -11,6 +11,7 @@ import { Context } from "../Context/Context";
 import app from "../App.css";
 
 export default function Login() {
+  const navigate = useNavigate();
   const { Login, emailValue, passwordValue, setEmailValue, setPasswordValue } =
     useContext(Context);
 
@@ -162,7 +163,7 @@ export default function Login() {
             style={{
               color: "black",
             }}
-            href="none"
+            href="/forget"
           >
             Нууц үгээ мартсан
           </a>

@@ -21,10 +21,13 @@ export function Provider({ children }) {
 
   const Login = async () => {
     try {
-      const res = await axios.post("http://localhost:7070/user/login", {
-        email: emailValue,
-        password: passwordValue,
-      });
+      const res = await axios.post(
+        "https://boginoo-web-app-batuka.onrender.com/user/login",
+        {
+          email: emailValue,
+          password: passwordValue,
+        }
+      );
       console.log(res);
       setUser(res?.data?.user);
       navigate("/home");
@@ -38,10 +41,13 @@ export function Provider({ children }) {
   const createPost = async () => {
     if (validator.isURL(inputValue)) {
       try {
-        const shortRes = await axios.post("http://localhost:7070/link", {
-          orignal_link: inputValue,
-          ownerID: user?._id,
-        });
+        const shortRes = await axios.post(
+          "https://boginoo-web-app-batuka.onrender.com/link",
+          {
+            orignal_link: inputValue,
+            ownerID: user?._id,
+          }
+        );
         setOutside(shortRes);
         setOrignal(inputValue);
         setShort(shortRes?.data?.short_link);

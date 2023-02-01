@@ -19,10 +19,13 @@ export default function Signup() {
   const signUp = async (req, res) => {
     if (passwordValue == passwordCheckValue) {
       try {
-        await axios.post("http://localhost:7070/user/createUser", {
-          email: emailValue,
-          password: passwordValue,
-        });
+        await axios.post(
+          "https://boginoo-web-app-batuka.onrender.com/user/createUser",
+          {
+            email: emailValue,
+            password: passwordValue,
+          }
+        );
         alert("User created");
         navigate("/Login");
       } catch (error) {

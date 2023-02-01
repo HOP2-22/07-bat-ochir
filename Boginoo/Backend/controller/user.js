@@ -74,3 +74,6 @@ exports.updateUserPass = async (req, res, next) => {
 
   res.status(200).json(updatedUser);
 };
+exports.forgetPassword = async (req, res) => {
+  const { email } = req.body;
+};
