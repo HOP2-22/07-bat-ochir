@@ -7,7 +7,7 @@ function Header({ changeTheme, setChangeTheme }) {
     <div
       className={`${
         changeTheme ? "bg-[#F4EDE5]" : "dark"
-      } w-full  h-[56px] flex justify-center items-center`}
+      } w-full  h-[60px] flex justify-center items-center fixed`}
     >
       <div className="w-[50%] flex justify-center items-center gap-[250px]">
         <div className="flex gap-10">
@@ -18,13 +18,14 @@ function Header({ changeTheme, setChangeTheme }) {
               } text-[20px] -rotate-[30deg] group-hover:rotate-[0] transition-transform`}
             />
             <p
-              className={`${changeTheme ? "text-[black]" : "text-[white]"}`}
-              class="text-[18px] font-bold"
+              className={`${
+                changeTheme ? "text-[black]" : "text-[white]"
+              } text-[18px] font-bold`}
             >
-              Takuya Matsuyama
+              Bat-Ochir Daramjav
             </p>
           </div>
-          <div className="flex gap-5 items-center">
+          <div className="flex gap-7 items-center ">
             <p className={`${changeTheme ? "text-[black]" : "text-[white]"}`}>
               Works
             </p>
@@ -34,7 +35,7 @@ function Header({ changeTheme, setChangeTheme }) {
             <p className={`${changeTheme ? "text-[black]" : "text-[white]"}`}>
               Uses
             </p>
-            <div className="flex items-center">
+            <div className="flex items-center gap-1">
               <FaGithub
                 className={`${changeTheme ? "text-[black]" : "text-[white]"}`}
               />
@@ -45,23 +46,26 @@ function Header({ changeTheme, setChangeTheme }) {
           </div>
         </div>
         <div>
-          <div
-            onClick={() => {
-              setChangeTheme(!changeTheme);
-            }}
-            className="w-[40px] h-[40px] bg-[#805BD5] rounded-md flex items-center justify-center text-white "
-          >
-            <BsFillMoonFill className="text-[20px]" />
-          </div>
-
-          <div
-            onClick={() => {
-              setChangeTheme(!changeTheme);
-            }}
-            className="w-[40px] h-[40px] bg-[#FAD18D] rounded-md flex items-center justify-center 	"
-          >
-            <BsFillSunFill className="text-[20px]" />
-          </div>
+          {" "}
+          {changeTheme ? (
+            <div
+              onClick={() => {
+                setChangeTheme(!changeTheme);
+              }}
+              className="w-[40px] h-[40px] bg-[#805BD5] rounded-md flex items-center justify-center text-white "
+            >
+              <BsFillMoonFill className="text-[20px]" />
+            </div>
+          ) : (
+            <div
+              onClick={() => {
+                setChangeTheme(!changeTheme);
+              }}
+              className="w-[40px] h-[40px] bg-[#FAD18D] rounded-md flex items-center justify-center 	"
+            >
+              <BsFillSunFill className="text-[20px]" />
+            </div>
+          )}
         </div>
       </div>
     </div>
