@@ -4,11 +4,12 @@ import { useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Main from "./components/Main";
-import Animation from "./components/Animation";
+import Banner from "./components/Banner";
 import Bio from "./components/Bio";
 import Hobby from "./components/Hobby";
 import Work from "./components/Work";
 import OnWeb from "./components/OnWeb";
+import Hidden from "./components/Hidden";
 
 function App() {
   const [changeTheme, setChangeTheme] = useState(false);
@@ -16,16 +17,17 @@ function App() {
     <div
       className={`${
         changeTheme ? "ligth" : "dark"
-      } w-full  flex flex-col items-center  gap-6 p-0`}
+      } w-full flex flex-col items-center gap-6 `}
     >
       <Header changeTheme={changeTheme} setChangeTheme={setChangeTheme} />
-      <div className="w-[620px]   flex flex-col items-center gap-10">
-        <Animation />
-        <Main changeTheme={changeTheme} setChangeTheme={setChangeTheme} />
-        <Work changeTheme={changeTheme} setChangeTheme={setChangeTheme} />
-        <Bio changeTheme={changeTheme} setChangeTheme={setChangeTheme} />
-        <Hobby changeTheme={changeTheme} setChangeTheme={setChangeTheme} />
-        <OnWeb changeTheme={changeTheme} setChangeTheme={setChangeTheme} />
+      <Hidden changeTheme={changeTheme} />
+      <div className="w-[90%] sm:w-[80%] md:w-[620px]   flex flex-col items-center gap-10">
+        <Banner />
+        <Main changeTheme={changeTheme} />
+        <Work changeTheme={changeTheme} />
+        <Bio changeTheme={changeTheme} />
+        <Hobby changeTheme={changeTheme} />
+        <OnWeb changeTheme={changeTheme} />
       </div>
 
       <Footer changeTheme={changeTheme} setChangeTheme={setChangeTheme} />

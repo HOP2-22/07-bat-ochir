@@ -8,7 +8,7 @@ const Redirect = () => {
     const redToURL = async () => {
       try {
         const res = await axios.get(
-          `https://boginoo-web-app-batuka.onrender.com//link/next/${redirect}`
+          `https://boginoo-web-app-batuka.onrender.com/link/next/${redirect}`
         );
         window.location.href = res.data.orignal_link;
       } catch (error) {

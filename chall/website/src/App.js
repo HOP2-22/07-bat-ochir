@@ -19,8 +19,8 @@ import Bodlogo from "./Lodash/Lodash";
 function App() {
   return (
     <>
-      <Bodlogo />
-      {/* <Game /> */}
+      {/* <Bodlogo /> */}
+      <Game />
       {/* <BrowserRouter>
         <MovieContextParent>
           <ThemeContext>

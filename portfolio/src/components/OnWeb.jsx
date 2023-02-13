@@ -20,45 +20,57 @@ function OnWeb({ changeTheme, setChangeTheme }) {
         On the web
       </div>
 
-      <div className="flex flex-col gap-3 p-2">
+      <div className="flex flex-col gap-1 p-2 md:text-[20px]">
         <p
           className={`${
-            changeTheme ? "text-[#2c7a7c]" : "text-[#81e4d8]"
-          } flex items-center gap-3 text-[18px] `}
+            changeTheme
+              ? // hover:bg-[#81e4d8]/10
+                // hover:bg-[#81e4d8]
+                "text-[#2c7a7c] decoration-[#6d97e8]  hover:bg-[#e4fcfc]"
+              : "text-[#81e4d8] decoration-[#df59ab]   hover:bg-[#81e4d8]/10 "
+          } flex items-center gap-3 text-[18px] hover:underline   h-[40px] w-[150px] justify-center rounded-[5px] `}
         >
           <AiFillGithub />
           spaceishere
         </p>
         <p
           className={`${
-            changeTheme ? "text-[#2c7a7c]" : "text-[#81e4d8]"
-          } flex items-center gap-3 text-[18px] `}
+            changeTheme
+              ? "text-[#2c7a7c] decoration-[#6d97e8]  hover:bg-[#e4fcfc] "
+              : "text-[#81e4d8] decoration-[#df59ab]   hover:bg-[#81e4d8]/10"
+          } flex items-center gap-3 text-[18px] hover:underline   h-[40px] w-[170px] justify-center rounded-[5px] `}
         >
           <AiOutlineTwitter />
           batukatoshyyy
         </p>
         <p
           className={`${
-            changeTheme ? "text-[#2c7a7c]" : "text-[#81e4d8]"
-          } flex items-center gap-3 text-[18px] `}
+            changeTheme
+              ? "text-[#2c7a7c] decoration-[#6d97e8]  hover:bg-[#e4fcfc] "
+              : "text-[#81e4d8] decoration-[#df59ab]   hover:bg-[#81e4d8]/10"
+          } flex items-center gap-3 text-[18px] hover:underline   h-[40px] w-[150px] justify-center rounded-[5px]`}
         >
           <AiOutlineTwitter />
           batukaishere
         </p>
+
         <p
           className={`${
-            changeTheme ? "text-[#2c7a7c]" : "text-[#81e4d8]"
-          } flex items-center gap-3 text-[18px] `}
+            changeTheme
+              ? "text-[#2c7a7c] decoration-[#6d97e8]  hover:bg-[#e4fcfc] "
+              : "text-[#81e4d8] decoration-[#df59ab]   hover:bg-[#81e4d8]/10"
+          } flex items-center gap-3 text-[18px] hover:underline   h-[40px] w-[150px] justify-center rounded-[5px]`}
         >
           <AiOutlineInstagram />
           batuka_777
         </p>
       </div>
-      <div className="flex  gap-8">
-        <div className="flex flex-col justify-center items-center">
+      <div className=" flex justify-center items-center gap-8 flex-col sm:flex-row">
+        <div className="flex flex-col justify-center items-center ">
           <iframe
             src="https://www.w3schools.com"
             title="W3Schools Free Online Web Tutorials"
+            className="rounded-[8px] w-[300px] sm:w-[270px] lg:w-[300px]"
           ></iframe>
           <p
             className={`${
@@ -74,6 +86,7 @@ function OnWeb({ changeTheme, setChangeTheme }) {
           <iframe
             src="https://www.facebook.com/profile.php?id=100086265115528"
             title="Spaceee"
+            className="rounded-[8px] w-[300px]  sm:w-[270px] lg:w-[300px]"
           ></iframe>
           <p
             className={`${

@@ -17,6 +17,7 @@ export default function Signup() {
   const navigate = useNavigate();
 
   const signUp = async (req, res) => {
+    console.log(emailValue, passwordValue);
     if (passwordValue == passwordCheckValue) {
       try {
         await axios.post(
@@ -26,6 +27,8 @@ export default function Signup() {
             password: passwordValue,
           }
         );
+        console.log("hehe");
+
         alert("User created");
         navigate("/Login");
       } catch (error) {

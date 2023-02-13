@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -42,12 +43,13 @@ export const Header = () => {
 
         {user ? (
           <div className="flex gap-4  items-center">
-            <div className="text-[30px]">{user.email}</div>
+            <div className="text-[30px]">{user}</div>
             <img
               src={Logout}
               className="w-6"
               onClick={() => {
-                navigate("/login  ");
+                Cookies.remove("token");
+                navigate("/login");
                 setUser("");
               }}
             />

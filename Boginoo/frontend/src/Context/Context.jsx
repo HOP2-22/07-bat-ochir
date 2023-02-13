@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import cookie from "js-cookie";
+import Cookie from "js-cookie";
 import validator from "validator";
+import Cookies from "js-cookie";
 
 export const Context = createContext({});
 
@@ -21,6 +22,7 @@ export function Provider({ children }) {
 
   const Login = async () => {
     try {
+      console.log(emailValue, passwordValue);
       const res = await axios.post(
         "https://boginoo-web-app-batuka.onrender.com/user/login",
         {
@@ -28,8 +30,11 @@ export function Provider({ children }) {
           password: passwordValue,
         }
       );
-      console.log(res);
-      setUser(res?.data?.user);
+      console.log("is done");
+      console.log(res.data);
+      setUser(res?.data?.user.email);
+      // console.log(res.data);
+      Cookie.set("token", res.data?.token);
       navigate("/home");
 
       // User_post();
@@ -48,6 +53,7 @@ export function Provider({ children }) {
             ownerID: user?._id,
           }
         );
+        console.log("done");
         setOutside(shortRes);
         setOrignal(inputValue);
         setShort(shortRes?.data?.short_link);
@@ -59,6 +65,26 @@ export function Provider({ children }) {
       alert("Is Not Valid URL");
     }
   };
+
+  axios.interceptors.request.use((req) => {
+    const token = Cookies.get("token");
+    if (token) {
+      req.headers.token = Cookies.get("token");
+    }
+    return req;
+  });
+
+  useEffect(() => {
+    const getUser = async () => {
+      const token = Cookies.get("token");
+      if (!token) return;
+      const res = await axios.get(
+        "https://boginoo-web-app-batuka.onrender.com/user/getUser"
+      );
+      setUser(res.data.user);
+    };
+    getUser();
+  }, []);
 
   return (
     <Context.Provider

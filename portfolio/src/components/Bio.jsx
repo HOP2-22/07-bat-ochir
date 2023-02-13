@@ -16,7 +16,7 @@ function Bio({ changeTheme, setChangeTheme }) {
       <div
         className={`${
           changeTheme ? "text-[black]" : "text-gray-200/70 "
-        } text-lg `}
+        } text-[12px] md:text-[20px] `}
       >
         <div className="flex gap-4">
           <p>2005</p>

@@ -11,6 +11,17 @@ function Home() {
   const navigate = useNavigate();
   const [links, setLinks] = useState([]);
 
+  useEffect(() => {
+    const getData = async () => {
+      const res = await axios.get(
+        `https://boginoo-web-app-batuka.onrender.com/link/${user?._id}`
+      );
+      setLinks(res?.data);
+    };
+    getData();
+
+    console.log(links);
+  }, [checkUpdates]);
   return (
     <div
       className="py-[300px]"

@@ -17,14 +17,14 @@ function Hobby({ changeTheme, setChangeTheme }) {
       <div
         className={`${
           changeTheme ? "text-[black]" : "text-gray-200/70 "
-        } flex  indent-4 `}
+        } flex text-[12px]  indent-1 w-full sm:indent-0 sm:text-[15px] md:text-[20px] lg:text-[19px]`}
       >
         <p className="flex">
           Art, Music,
           <span
             className={`${
               changeTheme ? "text-[#6d97e8]" : "text-[#df59ab] "
-            }  `}
+            } hover:underline `}
           >
             Drawing
           </span>
@@ -32,7 +32,7 @@ function Hobby({ changeTheme, setChangeTheme }) {
           <span
             className={`${
               changeTheme ? "text-[#6d97e8]" : "text-[#df59ab] "
-            }  `}
+            } hover:underline  `}
           >
             Photography
           </span>

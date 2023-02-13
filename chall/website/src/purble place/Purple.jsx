@@ -2,7 +2,6 @@ import React, { Component, useEffect, useState } from "react";
 import { data } from "./Data";
 import Container from "@mui/material/Container";
 import { Button } from "@mui/material";
-import Purple from "./Purple.css";
 
 const GameOver = ({ totalPoint, totalMin }) => {
   function refreshPage() {

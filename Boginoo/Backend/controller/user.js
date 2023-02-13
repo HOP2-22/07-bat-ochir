@@ -51,8 +51,7 @@ exports.login = async (req, res, next) => {
       },
       ACCESS_TOKEN_KEY
     );
-
-    res.status(200).json({ match: match, user: user });
+    res.status(200).json({ match: match, user: user, token });
   } catch (error) {
     res.status(400).json({ message: "password is dont match" });
   }
@@ -76,4 +75,12 @@ exports.updateUserPass = async (req, res, next) => {
 };
 exports.forgetPassword = async (req, res) => {
   const { email } = req.body;
+};
+exports.getUser = async (req, res) => {
+  const token = req.headers.token || "";
+  if (!token) {
+    return res.status(404).json({ message: "Invalid token" });
+  }
+  const data = await jwt.decode(token, ACCESS_TOKEN_KEY);
+  res.status(200).json(data);
 };

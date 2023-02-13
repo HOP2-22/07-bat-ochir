@@ -6,6 +6,7 @@ const {
   getUserByEmail,
   login,
   updateUserPass,
+  getUser,
 } = require("../controller/user.js");
 
 const Data = require("../model/user");
@@ -20,6 +21,7 @@ usersRouter.delete("/deleteAll", async (req, res) => {
 
 usersRouter.post("/createUser", createUser);
 usersRouter.get("/getUsers", getUsers);
+usersRouter.get("/getUser", getUser);
 usersRouter.get("/getUserByEmail", getUserByEmail);
 usersRouter.post("/login", login);
 usersRouter.patch("/updateUserPass", updateUserPass);

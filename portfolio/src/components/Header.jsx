@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaPaw, FaGithub } from "react-icons/fa";
 import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
 
 function Header({ changeTheme, setChangeTheme }) {
+  const [burger, setBurger] = useState(false);
   return (
     <div
       className={`${
         changeTheme ? "bg-[#F4EDE5]" : "dark"
-      } w-full  h-[60px] flex justify-center items-center fixed`}
+      } w-full  h-[60px] flex justify-center items-center fixed `}
     >
-      <div className="w-[50%] flex justify-center items-center gap-[250px]">
-        <div className="flex gap-10">
-          <div className="flex gap-1 items-center group">
+      <div className="w-[90%] sm:w-[80%] md:w-[620px] flex justify-between items-center">
+        <div className="flex gap-1">
+          <div className="flex gap-1 items-between group">
             <FaPaw
               className={`${
                 changeTheme ? "text-black" : "text-white"
@@ -20,12 +21,13 @@ function Header({ changeTheme, setChangeTheme }) {
             <p
               className={`${
                 changeTheme ? "text-[black]" : "text-[white]"
-              } text-[18px] font-bold`}
+              } text-[18px] w-[150px] font-bold `}
             >
-              Bat-Ochir Daramjav
+              Bat-Ochir
             </p>
           </div>
-          <div className="flex gap-7 items-center ">
+
+          <div className="hidden jus gap-7 items-center md:flex ">
             <p className={`${changeTheme ? "text-[black]" : "text-[white]"}`}>
               Works
             </p>
@@ -45,27 +47,53 @@ function Header({ changeTheme, setChangeTheme }) {
             </div>
           </div>
         </div>
-        <div>
-          {" "}
-          {changeTheme ? (
+        <div className="flex gap-4">
+          <div>
+            {" "}
+            {changeTheme ? (
+              <div
+                onClick={() => {
+                  setChangeTheme(!changeTheme);
+                }}
+                className="w-[40px] h-[40px] bg-[#805BD5] rounded-md flex items-center justify-center text-white "
+              >
+                <BsFillMoonFill className="text-[20px]" />
+              </div>
+            ) : (
+              <div
+                onClick={() => {
+                  setChangeTheme(!changeTheme);
+                }}
+                className="w-[40px] h-[40px] bg-[#FAD18D] rounded-md flex items-center justify-center 	"
+              >
+                <BsFillSunFill className="text-[20px]" />
+              </div>
+            )}
+          </div>
+          <div
+            className={`${
+              burger ? "hidden" : "flex"
+            }bg-white border-2 w-[40px] h-[40px] flex items-center justify-center rounded-md md:hidden flex-col gap-1`}
+            onClick={() => {
+              setBurger(!burger);
+            }}
+          >
             <div
-              onClick={() => {
-                setChangeTheme(!changeTheme);
-              }}
-              className="w-[40px] h-[40px] bg-[#805BD5] rounded-md flex items-center justify-center text-white "
-            >
-              <BsFillMoonFill className="text-[20px]" />
-            </div>
-          ) : (
+              className={`${
+                burger ? "rotate-45 translate-y-[3px]" : ""
+              }   h-[1.5px] rounded bg-white w-[60%] transition duration-200`}
+            ></div>
             <div
-              onClick={() => {
-                setChangeTheme(!changeTheme);
-              }}
-              className="w-[40px] h-[40px] bg-[#FAD18D] rounded-md flex items-center justify-center 	"
-            >
-              <BsFillSunFill className="text-[20px]" />
-            </div>
-          )}
+              className={`${
+                burger ? "hidden" : "block"
+              }  h-[1.5px] rounded bg-white w-[60%] transition duration-200`}
+            ></div>
+            <div
+              className={`${
+                burger ? "-rotate-45 -translate-y-[3px]" : ""
+              }  h-[1.5px] rounded bg-white w-[60%] transition duration-200`}
+            ></div>
+          </div>
         </div>
       </div>
     </div>
